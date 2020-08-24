@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.user.dao.UserDao">
+    <!--校验账号是否存在-->
+    <select id="countUser" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="int">
+        select 
+            count(*)
+        from
+            t_sys_user
+        where 
+            is_deleted = 0
+            and account = #{account}
+    </select>
+    <!--新增用户-->
+    <insert id="addUser" parameterType="com.xzsd.pc.user.entity.UserInfo">
+        insert into t_sys_user
+            (
+            account,
+            password,
+            role,
+            name,
+            sex,
+            phone,
+            email,
+            idCard,
+            photo,
+            is_deleted,
+            create_by,
+            gmt_create,
+            last_modified_by,
+            gmt_modified,
+            version
+            )
+        values
+            (
+            #{account},
+            #{password},
+            #{role},
+            #{name},
+            #{sex},
+            #{phone},
+            #{email},
+            #{idCard},
+            #{photo},
+            0,
+            #{createBy},
+            now(),
+            #{lastModifiedBy},
+            now(),
+            0
+            )
+    </insert>
+    <!--查询用户分页列表-->
+    <select id="listUsers" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="com.xzsd.pc.user.entity.UserInfo">
+        select
+            user_id userId,
+            account,
+            role,
+            name,
+            sex,
+            phone,
+            email,
+            idCard
+        from
+            t_sys_account
+        where
+            is_deleted = 0
+        <if test="account != null and account != ''">
+            and account = #{account}
+        </if>
+        <if test="name != null and name != ''">
+            and name = #{name}
+        </if>
+        <if test="role != null and role != ''">
+            and role = #{role}
+        </if>
+    </select>
+    <!--查询用户详情-->
+    <select id="findUserById" parameterType="java.lang.String" resultType="com.xzsd.pc.user.entity.UserInfo">
+        select
+            account,
+            name,
+            sex,
+            phone,
+            email,
+            idCard,
+            password,
+            photo,
+            role,
+            version
+        from
+            t_sys_user
+        where
+            is_deleted = 0
+            and user_id = #{userId}
+    </select>
+    <!--统计用户账号或手机号数量-->
+    <select id="countUserAccountOrPhone" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="int">
+        select
+            count(*)
+        from
+            t_sys_user
+        where
+            is_deleted = 0
+        <if test="userId != null and userId != ''">
+            and user_id != #{userId}
+        </if>
+        and (account = #{account} or phone = #{phone})
+    </select>
+    <!--修改用户信息-->
+    <update id="updateUserById" parameterType="com.xzsd.pc.user.entity.UserInfo">
+        update
+            t_sys_user
+        set
+            account    = #{account},
+            password   = #{password},
+            name            = #{name},
+            sex             = #{sex},
+            phone           = #{phone},
+            email           = #{email},
+            idCard          = #{idCard},
+            role            = #{role},
+            last_modified_by    = #{lastModifiedBy},
+            gmt_modified    = now(),
+            version         = version + 1
+        where
+            user_id = #{userId}
+            and version = #{version}
+    </update>
+    <!--删除用户-->
+    <update id="deleteUser" parameterType="com.xzsd.pc.user.entity.UserInfo">
+        update
+            t_sys_user
+        set
+            is_deleted = 1,
+            gmt_modified = now(),
+            last_modified_by = #{updateUserId},
+            version = version + 1
+        where
+            user_id in
+        <foreach item="item" index="index" collection="listDeleteUserId" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>

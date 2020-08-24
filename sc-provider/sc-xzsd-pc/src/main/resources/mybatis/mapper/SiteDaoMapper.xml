@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.site.dao.SiteDao">
+    <!--校验站点是否存在-->
+    <select id="countSite" parameterType="com.xzsd.pc.site.entity.SiteInfo" resultType="int">
+        select
+            count(*)
+        from
+            t_sys_site
+        where
+            is_deleted = 0
+            and site_name = #{siteName}
+    </select>
+    <!--新增站点-->
+    <insert id="addSite" parameterType="com.xzsd.pc.site.entity.SiteInfo">
+        insert into t_sys_site
+            (
+            site_id,
+            site_name,
+            last_site_id,
+            is_deleted,
+            create_by,
+            gmt_create,
+            last_modified_by,
+            gmt_modified,
+            version
+            )
+        values
+            (
+            #{siteId},
+            #{siteName},
+            #{lastSiteId},
+            0,
+            #{createBy},
+            now(),
+            #{lastModifiedBy},
+            now(),
+            0
+            )
+    </insert>
+
+</mapper>
