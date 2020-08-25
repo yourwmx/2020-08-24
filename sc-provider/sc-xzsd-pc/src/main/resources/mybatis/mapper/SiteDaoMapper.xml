@@ -57,6 +57,21 @@
             a.is_deleted = 0
             and b.is_deleted = 0
             and b.site_id = a.site_id
+        <if test="siteId != null and siteId !=''">
+            and site_id = #{siteId}
+        </if>
+        <if test="siteName != null and siteName !=''">
+            and site_name = #{siteName}
+        </if>
+        <if test="account != null and account !=''">
+            and account = #{account}
+        </if>
+        <if test="provinceId != null and provinceId !=''">
+            and province_id = #{provinceId}
+        </if>
+        <if test="cityId != null and cityId !=''">
+            and city_id = #{cityId}
+        </if>
         order by a.gmt_create desc
     </select>
     <!--查询站点详情-->
