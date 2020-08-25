@@ -65,6 +65,10 @@ public class OrderInfo {
      */
     private String orderState;
     /**
+     * 邮费
+     */
+    private String postage;
+    /**
      * 用户编号
      */
     private String userId;
@@ -271,5 +275,13 @@ public class OrderInfo {
 
     public void setDestinationCityName(String destinationCityName) {
         this.destinationCityName = destinationCityName;
+    }
+
+    public String getPostage() {
+        return postage;
+    }
+
+    public void setPostage(String postage) {
+        this.postage = postage;
     }
 }

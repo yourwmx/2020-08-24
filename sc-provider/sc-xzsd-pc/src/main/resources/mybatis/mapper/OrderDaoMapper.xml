@@ -14,6 +14,7 @@
             e.site_name destinationCityId,
             destination,
             order_state orderState,
+            postage,
             user_id userId,
             bag_id bagId
         from
@@ -52,6 +53,7 @@
                 destination_city_id,
                 destination,
                 order_state,
+                postage,
                 user_id,
                 is_deleted,
                 create_by,
@@ -70,6 +72,7 @@
                 #{destinationCityId},
                 #{destination},
                 0,
+                #{postage},
                 #{userId},
                 0,
                 #{createBy},
@@ -90,6 +93,7 @@
             e.site_name destinationCityId,
             destination,
             order_state orderState,
+            postage,
             user_id userId,
             bag_id bagId,
             a.version
