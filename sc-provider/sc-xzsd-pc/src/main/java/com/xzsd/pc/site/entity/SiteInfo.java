@@ -1,6 +1,7 @@
 package com.xzsd.pc.site.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 站点类
@@ -8,6 +9,18 @@ import java.util.Date;
  * 2020-08-23 16:04
  */
 public class SiteInfo {
+    /**
+     * 二级站点信息
+     */
+    private List<SiteInfo> nextInfo;
+    /**
+     * 页码
+     */
+    private int pageSize;
+    /**
+     * 页数
+     */
+    private int pageNum;
     /**
      * 站点编号
      */
@@ -103,5 +116,29 @@ public class SiteInfo {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public List<SiteInfo> getNextInfo() {
+        return nextInfo;
+    }
+
+    public void setNextInfo(List<SiteInfo> nextInfo) {
+        this.nextInfo = nextInfo;
     }
 }

@@ -57,6 +57,7 @@
     <!--个人信息查询-->
     <select id="findInformationById" parameterType="java.lang.String" resultType="com.neusoft.webauth.user.entity.UserInfo">
         select
+            user_id userId,
             account,
             photo,
             role

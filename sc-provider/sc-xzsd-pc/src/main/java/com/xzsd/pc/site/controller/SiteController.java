@@ -48,5 +48,71 @@ public class SiteController {
         }
     }
 
+    /**
+     * 查询站点列表
+     * wumaoxing
+     * 2020-08-25 8:53
+     */
+    @RequestMapping("listSites")
+    public AppResponse listSites() {
+        try {
+            return siteService.listSites();
+        } catch (Exception e) {
+            logger.error("查询站点列表异常", e);
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
 
+    /**
+     * 查询站点详情
+     * wumaoxing
+     * 2020-08-25 10:38
+     */
+    @RequestMapping(value = "findSiteById")
+    public AppResponse findSiteById(String siteId) {
+        SiteInfo siteInfo = null;
+        try {
+            siteInfo = siteService.findSiteById(siteId);
+        } catch (Exception e) {
+            logger.error("站点查询错误", e);
+            throw new ScServerException("查询错误，请重试");
+        }
+        return AppResponse.success("查询成功", siteInfo);
+    }
+
+    /**
+     * 修改站点
+     * wumaoxing
+     * 2020-08-25 11:25
+     */
+    @PostMapping("updateSiteById")
+    public AppResponse updateSiteById(SiteInfo siteInfo) {
+        try {
+            //获取用户id
+            String userId = SecurityUtils.getCurrentUserId();
+            siteInfo.setLastModifiedBy(userId);
+            return siteService.updateSiteById(siteInfo);
+        } catch (Exception e) {
+            logger.error("修改站点信息错误", e);
+            throw new ScServerException("系统错误，请重试");
+        }
+    }
+
+    /**
+     * 删除站点
+     * wumaoxing
+     * 2020-08-25 11:25
+     */
+    @PostMapping("deleteSite")
+    public AppResponse deleteSite(String siteId) {
+        try {
+            //获取用户id
+            String updateUserId = SecurityUtils.getCurrentUserId();
+            return siteService.deleteSite(siteId,updateUserId);
+        } catch (Exception e) {
+            logger.error("站点删除错误", e);
+            throw new ScServerException("站点删除错误");
+        }
+    }
 }

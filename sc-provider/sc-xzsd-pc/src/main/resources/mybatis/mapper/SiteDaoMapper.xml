@@ -12,6 +12,9 @@
         where
             is_deleted = 0
             and site_name = #{siteName}
+        <if test="site_id != null and site_id !=''">
+            and site_id != #{siteId}
+        </if>
     </select>
     <!--新增站点-->
     <insert id="addSite" parameterType="com.xzsd.pc.site.entity.SiteInfo">
@@ -40,5 +43,75 @@
             0
             )
     </insert>
-
+    <!--查询站点列表-->
+    <resultMap id="listSitesMap" type="com.xzsd.pc.site.entity.SiteInfo">
+        <id property="siteId" column="site_id"></id>
+        <result property="siteName" column="site_name"></result>
+        <collection property="nextInfos" ofType="com.xzsd.pc.site.entity.SiteInfo">
+            <id column="site_ids" property="siteId"></id>
+            <result column="site_names" property="siteName"></result>
+        </collection>
+    </resultMap>
+    <select id="listSites" resultMap="listSitesMap">
+        select
+            a.site_id,
+            a.site_name,
+            b.site_id site_ids,
+            b.site_name site_names
+        from
+            t_sys_site a
+        left join
+            t_sys_site b
+        on
+            b.is_deleted = 0
+            and b.last_site_id = a.site_id
+            and b.last_site_id != 0
+        where
+            a.is_deleted = 0
+            and a.last_site_id = 0
+        order by a.gmt_create desc
+    </select>
+    <!--查询站点详情-->
+    <select id="findSiteById" parameterType="java.lang.String" resultType="com.xzsd.pc.site.entity.SiteInfo">
+        select
+            site_id siteId,
+            site_name siteName,
+            last_site_id lastSiteId,
+            version
+        from
+            t_sys_site
+        where
+            is_deleted = 0
+            and site_id = #{siteId}
+    </select>
+    <!--修改站点信息-->
+    <update id="updateSiteById" parameterType="com.xzsd.pc.site.entity.SiteInfo">
+        update
+            t_sys_site
+        set
+            site_id         = #{siteId},
+            site_name       = #{siteName},
+            last_site_id       = #{lastSiteId},
+            last_modified_by    = #{lastModifiedBy},
+            gmt_modified    = now(),
+            version         = version + 1
+        where
+            site_id = #{siteId}
+            and version = #{version}
+    </update>
+    <!--删除站点-->
+    <update id="deleteSite" parameterType="com.xzsd.pc.site.entity.SiteInfo">
+        update
+            t_sys_site
+        set
+            is_deleted = 1,
+            gmt_modified = now(),
+            last_modified_by = #{updateUserId},
+            version = version + 1
+        where
+            site_id in
+        <foreach item="item" index="index" collection="listDeleteSiteId" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

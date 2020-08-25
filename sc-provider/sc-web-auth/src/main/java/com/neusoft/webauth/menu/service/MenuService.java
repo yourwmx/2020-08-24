@@ -5,12 +5,9 @@ import com.neusoft.util.StringUtil;
 import com.neusoft.util.UUIDUtils;
 import com.neusoft.webauth.base.constant.GlobalConstant;
 import com.neusoft.webauth.base.entity.Tree;
-import com.neusoft.webauth.menu.dao.MenuBtnDao;
 import com.neusoft.webauth.menu.dao.MenuDao;
 import com.neusoft.webauth.menu.entity.Menu;
-import com.neusoft.webauth.menu.entity.MenuBtn;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -27,9 +24,6 @@ public class MenuService {
     @Resource
     private MenuDao menuDao;
 
-    @Resource
-    private MenuBtnDao menuBtnDao;
-
     /**
      * 部门：南京软件研发中心
      * 功能：查询全部菜单
@@ -37,7 +31,7 @@ public class MenuService {
      * 作成者：朱庆锋
      * 作成时间：2018/11/28
      */
-    public Map<String,Object> listMenus(String rootId, String roleCode) {
+    public Map<String,Object> listMenus(String rootId) {
         Map<String, Object> map = new HashMap<String, Object>();
         // 查询全部菜单
         List<Menu> allMenus = menuDao.listMenus();
@@ -86,30 +80,6 @@ public class MenuService {
         tree.setPid(menu.getParentMenuCode());
         tree.setLabel(menu.getMenuName());
         tree.setAttributes(menu);
-    }
-
-    /**
-     * 部门：南京软件研发中心
-     * 功能：删除菜单
-     * 描述：略
-     * 作成者：朱庆锋
-     * 作成时间：2018/8/30
-     */
-    @Transactional(rollbackFor = Exception.class)
-    public void deleteMenu(Menu menu) {
-        // 删除角色关联的菜单按钮
-        menuDao.deleteRoleMenuBtnByMenu(menu);
-        // 删除角色关联菜单
-        menuDao.deleteRoleMenu(menu);
-
-        // 删除菜单按钮
-        MenuBtn menuBtn = new MenuBtn();
-        menuBtn.setMenuAuthCode(menu.getAuthCode());
-        menuBtnDao.deleteMenuBtn(menuBtn);
-
-        // 删除菜单
-        menuDao.deleteMenu(menu);
-
     }
 
     /**

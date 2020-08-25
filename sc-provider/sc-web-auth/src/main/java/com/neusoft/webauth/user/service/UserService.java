@@ -33,7 +33,7 @@ public class UserService {
         String password = PasswordUtils.generatePassword(userInfo.getPassword());
         userInfo.setUserId(UUIDUtils.getUUID());
         userInfo.setPassword(password);
-        userInfo.setIsDeleted(0);
+        userInfo.setRole("0");
         // 新增用户
         int count = userDao.addUser(userInfo);
         if(0 == count) {

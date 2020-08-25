@@ -33,8 +33,8 @@ public class UserService {
         if(0 != countUser) {
             return AppResponse.bizError("用户账号已存在，请重新输入！");
         }
-        // 密码加密 默认为123456
-        String password = PasswordUtils.generatePassword("123456");
+        // 密码加密
+        String password = PasswordUtils.generatePassword(userInfo.getPassword());
         userInfo.setUserId(UUIDUtils.getUUID());
         userInfo.setPassword(password);
         userInfo.setIsDeleted(0);
@@ -85,6 +85,7 @@ public class UserService {
         if(0 != countUser) {
             return AppResponse.bizError("用户账号或手机号已存在，请重新输入！");
         }
+        userInfo.setPassword(PasswordUtils.generatePassword(userInfo.getPassword()));
         // 修改用户信息
         int count = userDao.updateUserById(userInfo);
         if (0 == count) {

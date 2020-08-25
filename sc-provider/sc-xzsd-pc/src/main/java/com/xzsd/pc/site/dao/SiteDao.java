@@ -1,6 +1,9 @@
 package com.xzsd.pc.site.dao;
 
 import com.xzsd.pc.site.entity.SiteInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SiteDao {
     /**
@@ -15,4 +18,27 @@ public interface SiteDao {
      * 2020-08-24 11:20
      */
     int addSite(SiteInfo siteInfo);
+    /**
+     * 查询站点列表
+     * wumaoxing
+     * 2020-08-25 9:05
+     */
+    List<SiteInfo> listSites();
+    /**
+     * 查询站点详情
+     * wumaoxing
+     * 2020-08-25 10:43
+     */
+    SiteInfo findSiteById(String siteId);
+    /**
+     * 修改站点信息
+     * wumaoxing
+     * 2020-08-25 13:24
+     */
+    int updateSiteById(SiteInfo siteInfo);
+    /**
+     * 删除站点信息
+     * wumaoxing
+     */
+    int deleteSite(@Param("listDeleteSiteId") List<String> listDeleteSiteId, @Param("updateSiteId") String updateSiteId);
 }
