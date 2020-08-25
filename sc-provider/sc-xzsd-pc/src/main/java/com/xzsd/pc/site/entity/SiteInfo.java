@@ -10,10 +10,6 @@ import java.util.List;
  */
 public class SiteInfo {
     /**
-     * 二级站点信息
-     */
-    private List<SiteInfo> nextInfo;
-    /**
      * 页码
      */
     private int pageSize;
@@ -29,6 +25,22 @@ public class SiteInfo {
      * 站点名称
      */
     private String siteName;
+    /**
+     * 所在省份编号
+     */
+    private String provinceId;
+    /**
+     * 所在省份名称
+     */
+    private String provinceName;
+    /**
+     * 所在城市编号
+     */
+    private String cityId;
+    /**
+     * 所在城市名称
+     */
+    private String cityName;
     /**
      * 删除标记 0未删 1删
      */
@@ -134,11 +146,35 @@ public class SiteInfo {
         this.pageNum = pageNum;
     }
 
-    public List<SiteInfo> getNextInfo() {
-        return nextInfo;
+    public String getProvinceId() {
+        return provinceId;
     }
 
-    public void setNextInfo(List<SiteInfo> nextInfo) {
-        this.nextInfo = nextInfo;
+    public void setProvinceId(String provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 }

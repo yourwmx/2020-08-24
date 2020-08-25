@@ -1,5 +1,7 @@
 package com.xzsd.pc.order.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -8,6 +10,14 @@ import java.util.Date;
  * 2020-08-20 22:05
  */
 public class OrderInfo {
+    /**
+     * 账号
+     */
+    private String account;
+    /**
+     * 手机
+     */
+    private String phone;
     /**
      * 订单编号
      */
@@ -76,6 +86,16 @@ public class OrderInfo {
      * 袋子编号
      */
     private String bagId;
+    /**
+     * 付款时间起
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date payTimeStart;
+    /**
+     * 付款时间止
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date payTimeEnd;
     /**
      * 删除标记 0未删 1删
      */
@@ -283,5 +303,37 @@ public class OrderInfo {
 
     public void setPostage(String postage) {
         this.postage = postage;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Date getPayTimeStart() {
+        return payTimeStart;
+    }
+
+    public void setPayTimeStart(Date payTimeStart) {
+        this.payTimeStart = payTimeStart;
+    }
+
+    public Date getPayTimeEnd() {
+        return payTimeEnd;
+    }
+
+    public void setPayTimeEnd(Date payTimeEnd) {
+        this.payTimeEnd = payTimeEnd;
     }
 }

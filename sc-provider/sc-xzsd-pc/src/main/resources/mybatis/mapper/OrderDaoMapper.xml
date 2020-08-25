@@ -15,18 +15,36 @@
             destination,
             order_state orderState,
             postage,
-            user_id userId,
+            f.account,
+            f.phone,
             bag_id bagId
         from
-            t_sys_order a,t_sys_site b,t_sys_site c,t_sys_site d,t_sys_site e
+            t_sys_order a,t_sys_site b,t_sys_site c,t_sys_site d,t_sys_site e,t_sys_user f
         where
             is_deleted = 0
             and origin_province_id = b.site_id
             and origin_city_id = c.site_id
             and destination_province_id = d.site_id
             and destination_city_id = e.site_id
+            and a.user_id = f.user_id
         <if test="role == 4">
             and user_id = #{userId}
+        </if>
+        <if test="orderId != null and orderId !=''">
+            and order_id = #{orderId}
+        </if>
+        <if test="account != null and account !=''">
+            and f.name like concat('%',#{account},'%')
+        </if>
+        <if test="phone != null and phone !=''">
+            and f.phone like concat('%',#{phone},'%')
+        </if>
+        <if test="orderState != null and orderState !=''">
+            and order_state = #{orderState}
+        </if>
+        <if test="payTimeStart != null and payTimeEnd != null">
+            and a.gmt_create
+            between #{payTimeStart} and #{payTimeEnd}
         </if>
         order by a.gmt_create desc
     </select>

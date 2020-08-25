@@ -22,7 +22,8 @@
             (
             site_id,
             site_name,
-            last_site_id,
+            province_id,
+            city_id,
             is_deleted,
             create_by,
             gmt_create,
@@ -34,7 +35,8 @@
             (
             #{siteId},
             #{siteName},
-            #{lastSiteId},
+            #{provinceId},
+            #{cityId},
             0,
             #{createBy},
             now(),
@@ -44,45 +46,35 @@
             )
     </insert>
     <!--查询站点列表-->
-    <resultMap id="listSitesMap" type="com.xzsd.pc.site.entity.SiteInfo">
-        <id property="siteId" column="site_id"></id>
-        <result property="siteName" column="site_name"></result>
-        <collection property="nextInfos" ofType="com.xzsd.pc.site.entity.SiteInfo">
-            <id column="site_ids" property="siteId"></id>
-            <result column="site_names" property="siteName"></result>
-        </collection>
-    </resultMap>
-    <select id="listSites" resultMap="listSitesMap">
+    <select id="listSites" parameterType="com.xzsd.pc.site.entity.SiteInfo" resultType="com.xzsd.pc.site.entity.SiteInfo">
         select
-            a.site_id,
-            a.site_name,
-            b.site_id site_ids,
-            b.site_name site_names
+            a.site_id siteId,
+            a.site_name siteName,
+            b.account
         from
-            t_sys_site a
-        left join
-            t_sys_site b
+            t_sys_site a left join t_sys_user b
         on
-            b.is_deleted = 0
-            and b.last_site_id = a.site_id
-            and b.last_site_id != 0
-        where
             a.is_deleted = 0
-            and a.last_site_id = 0
+            and b.is_deleted = 0
+            and b.site_id = a.site_id
         order by a.gmt_create desc
     </select>
     <!--查询站点详情-->
     <select id="findSiteById" parameterType="java.lang.String" resultType="com.xzsd.pc.site.entity.SiteInfo">
         select
-            site_id siteId,
-            site_name siteName,
-            last_site_id lastSiteId,
-            version
+            a.site_id siteId,
+            a.site_name siteName,
+            b.v provinceName,
+            c.v cityName
+            a.version
         from
-            t_sys_site
+            t_sys_site a,t_sys_dictionary b,t_sys_dictionary c
         where
-            is_deleted = 0
+            a.is_deleted = 0
+            and a.province_id = b.dictionary_id
+            and a.city_id = c.dictionary_id
             and site_id = #{siteId}
+        order by a.gmt_create desc
     </select>
     <!--修改站点信息-->
     <update id="updateSiteById" parameterType="com.xzsd.pc.site.entity.SiteInfo">
@@ -91,7 +83,8 @@
         set
             site_id         = #{siteId},
             site_name       = #{siteName},
-            last_site_id       = #{lastSiteId},
+            province_id       = #{provinceId},
+            city_id            = #{cityId},
             last_modified_by    = #{lastModifiedBy},
             gmt_modified    = now(),
             version         = version + 1
