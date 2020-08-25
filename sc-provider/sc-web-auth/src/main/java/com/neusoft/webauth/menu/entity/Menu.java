@@ -10,61 +10,61 @@ import java.util.Date;
  */
 
 public class Menu {
-
-    private String id;
-
-    private String menuCode;
-
-    private String menuName;
-
-    private String menuUrl;
-
-    private String parentMenuCode;
-
-    private String type;
-
-    private int sortNo;
-
-    private String isDeleted;
-
-    private String remark;
-
-    private String createBy;
-
-    private String  lastModifiedBy;
-
-    private int level;
-
-    private String authCode;
-
-    private String parentAuthCode;
-
-    private String[] menuCodes;
-
-    private String userCode;
-
-    private Date gmtCreate;
-    private Date gmtModified;
-
     /**
-     * 版本
+     * 菜单编号
+     */
+    private String menuId;
+    /**
+     * 菜单名称
+     */
+    private String menuName;
+    /**
+     * 菜单路由
+     */
+    private String menuRoute;
+    /**
+     * 上级菜单编号
+     */
+    private String lastLevelId;
+    /**
+     * 是否菜单
+     */
+    private String isMenu;
+    /**
+     * 菜单备注
+     */
+    private String menuNote;
+    /**
+     * 删除标记 0未删 1删
+     */
+    private int isDeleted;
+    /**
+     * 创建人
+     */
+    private String createBy;
+    /**
+     * 创建时间
+     */
+    private Date gmtCreate;
+    /**
+     * 修改人
+     */
+    private String lastModifiedBy;
+    /**
+     * 修改时间
+     */
+    private Date gmtModified;
+    /**
+     * 版本号
      */
     private String version;
 
-    public String getId() {
-        return id;
+    public String getMenuId() {
+        return menuId;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getMenuCode() {
-        return menuCode;
-    }
-
-    public void setMenuCode(String menuCode) {
-        this.menuCode = menuCode;
+    public void setMenuId(String menuId) {
+        this.menuId = menuId;
     }
 
     public String getMenuName() {
@@ -75,52 +75,44 @@ public class Menu {
         this.menuName = menuName;
     }
 
-    public String getMenuUrl() {
-        return menuUrl;
+    public String getMenuRoute() {
+        return menuRoute;
     }
 
-    public void setMenuUrl(String menuUrl) {
-        this.menuUrl = menuUrl;
+    public void setMenuRoute(String menuRoute) {
+        this.menuRoute = menuRoute;
     }
 
-    public String getParentMenuCode() {
-        return parentMenuCode;
+    public String getLastLevelId() {
+        return lastLevelId;
     }
 
-    public void setParentMenuCode(String parentMenuCode) {
-        this.parentMenuCode = parentMenuCode;
+    public void setLastLevelId(String lastLevelId) {
+        this.lastLevelId = lastLevelId;
     }
 
-    public String getType() {
-        return type;
+    public String getIsMenu() {
+        return isMenu;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setIsMenu(String isMenu) {
+        this.isMenu = isMenu;
     }
 
-    public int getSortNo() {
-        return sortNo;
+    public String getMenuNote() {
+        return menuNote;
     }
 
-    public void setSortNo(int sortNo) {
-        this.sortNo = sortNo;
+    public void setMenuNote(String menuNote) {
+        this.menuNote = menuNote;
     }
 
-    public String getIsDeleted() {
+    public int getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(String isDeleted) {
+    public void setIsDeleted(int isDeleted) {
         this.isDeleted = isDeleted;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 
     public String getCreateBy() {
@@ -131,60 +123,20 @@ public class Menu {
         this.createBy = createBy;
     }
 
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public String getAuthCode() {
-        return authCode;
-    }
-
-    public void setAuthCode(String authCode) {
-        this.authCode = authCode;
-    }
-
-    public String getParentAuthCode() {
-        return parentAuthCode;
-    }
-
-    public void setParentAuthCode(String parentAuthCode) {
-        this.parentAuthCode = parentAuthCode;
-    }
-
-    public String[] getMenuCodes() {
-        return menuCodes;
-    }
-
-    public void setMenuCodes(String[] menuCodes) {
-        this.menuCodes = menuCodes;
-    }
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
-    }
-
     public Date getGmtCreate() {
         return gmtCreate;
     }
 
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
     }
 
     public Date getGmtModified() {

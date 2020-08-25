@@ -49,15 +49,15 @@ public class MenuService {
         while(menuIterator.hasNext()){
             Menu temp = menuIterator.next();
             //初始化自身节点
-            if(temp.getMenuCode().equals(selfCode)){
+            if(temp.getMenuId().equals(selfCode)){
                 menuToTree(temp,rootTree);
-            }else if(temp.getParentMenuCode().equals(selfCode)){
+            }else if(temp.getLastLevelId().equals(selfCode)){
                 //初始化子节点
                 Tree children = new Tree();
                 menuToTree(temp,children);
                 rootTree.getChildren().add(children);
                 //递归
-                initTree(children,allMenus,temp.getMenuCode());
+                initTree(children,allMenus,temp.getMenuId());
             }
         }
     }
@@ -70,9 +70,9 @@ public class MenuService {
      * 作成时间：2018/11/28
      */
     private void menuToTree(Menu menu, Tree tree){
-        tree.setId(menu.getMenuCode());
-        tree.setIndex(menu.getMenuUrl());
-        tree.setPid(menu.getParentMenuCode());
+        tree.setId(menu.getMenuId());
+        tree.setIndex(menu.getMenuRoute());
+        tree.setPid(menu.getLastLevelId());
         tree.setLabel(menu.getMenuName());
         tree.setAttributes(menu);
     }
