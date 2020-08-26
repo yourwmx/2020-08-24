@@ -33,10 +33,10 @@ public class OrderController {
      * 2020-08-20 21:16
      */
     @RequestMapping("listOrders")
-    public AppResponse listOrders(UserInfo userInfo) {
+    public AppResponse listOrders(OrderInfo orderInfo) {
         try {
-            userInfo.setUserId(SecurityUtils.getCurrentUserId());
-            return orderService.listOrders(userInfo);
+            orderInfo.setUserId(SecurityUtils.getCurrentUserId());
+            return orderService.listOrders(orderInfo);
         } catch (Exception e) {
             logger.error("查件异常", e);
             System.out.println(e.toString());

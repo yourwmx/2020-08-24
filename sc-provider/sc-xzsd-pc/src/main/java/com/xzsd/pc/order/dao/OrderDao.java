@@ -13,7 +13,7 @@ public interface OrderDao {
      * wumaoxing
      * 2020-08-20 21:58
      */
-    List<OrderInfo> listOrders(UserInfo userInfo);
+    List<OrderInfo> listOrders(OrderInfo orderInfo);
     /**
      * 查询站点编号列表
      * wumaoxing

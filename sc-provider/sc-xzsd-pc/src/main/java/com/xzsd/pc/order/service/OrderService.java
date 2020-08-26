@@ -28,8 +28,8 @@ public class OrderService {
      * wumaoxing
      * 2020-08-20 21:31
      */
-    public AppResponse listOrders(UserInfo userInfo) {
-        return AppResponse.success("查询成功！", orderDao.listOrders(userInfo));
+    public AppResponse listOrders(OrderInfo orderInfo) {
+        return AppResponse.success("查询成功！", orderDao.listOrders(orderInfo));
     }
 
     /**
