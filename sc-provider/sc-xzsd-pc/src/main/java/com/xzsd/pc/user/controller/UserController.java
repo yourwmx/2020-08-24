@@ -47,7 +47,7 @@ public class UserController {
      * 2020-08-21 9:42
      */
     @RequestMapping("listUsers")
-    public AppResponse listAccounts(UserInfo userInfo){
+    public AppResponse listUsers(UserInfo userInfo){
         try {
             return userService.listUsers(userInfo);
         } catch (Exception e) {
