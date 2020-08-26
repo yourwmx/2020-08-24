@@ -35,6 +35,14 @@ public class OrderInfo {
      */
     private String orderId;
     /**
+     * 收件人姓名
+     */
+    private String receiverName;
+    /**
+     * 收件人手机
+     */
+    private String receiverPhone;
+    /**
      * 收件员用户编号
      */
     private String receiverUserId;
@@ -371,5 +379,21 @@ public class OrderInfo {
 
     public void setPageNum(int pageNum) {
         this.pageNum = pageNum;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
     }
 }
