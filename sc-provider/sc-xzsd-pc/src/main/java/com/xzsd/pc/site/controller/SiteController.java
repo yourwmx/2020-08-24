@@ -54,9 +54,9 @@ public class SiteController {
      * 2020-08-25 8:53
      */
     @RequestMapping("listSites")
-    public AppResponse listSites() {
+    public AppResponse listSites(SiteInfo siteInfo) {
         try {
-            return siteService.listSites();
+            return siteService.listSites(siteInfo);
         } catch (Exception e) {
             logger.error("查询站点列表异常", e);
             System.out.println(e.toString());
