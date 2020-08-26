@@ -21,7 +21,7 @@
         from
             t_sys_order a,t_sys_site b,t_sys_site c,t_sys_site d,t_sys_site e,t_sys_user f
         where
-            is_deleted = 0
+            a.is_deleted = 0
             and origin_province_id = b.site_id
             and origin_city_id = c.site_id
             and destination_province_id = d.site_id
