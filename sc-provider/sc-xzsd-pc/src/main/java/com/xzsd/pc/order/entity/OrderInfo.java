@@ -11,6 +11,10 @@ import java.util.Date;
  */
 public class OrderInfo {
     /**
+     * 角色
+     */
+    private String role;
+    /**
      * 账号
      */
     private String account;
@@ -335,5 +339,13 @@ public class OrderInfo {
 
     public void setPayTimeEnd(Date payTimeEnd) {
         this.payTimeEnd = payTimeEnd;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
