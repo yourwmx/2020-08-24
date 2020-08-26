@@ -1,5 +1,7 @@
 package com.xzsd.pc.order.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.order.dao.OrderDao;
@@ -29,7 +31,11 @@ public class OrderService {
      * 2020-08-20 21:31
      */
     public AppResponse listOrders(OrderInfo orderInfo) {
-        return AppResponse.success("查询成功！", orderDao.listOrders(orderInfo));
+        PageHelper.startPage(orderInfo.getPageNum(), orderInfo.getPageSize());
+        List<OrderInfo> orderInfoList = orderDao.listOrders(orderInfo);
+        // 包装Page对象
+        PageInfo<OrderInfo> pageData = new PageInfo<OrderInfo>(orderInfoList);
+        return AppResponse.success("查询成功！",pageData);
     }
 
     /**

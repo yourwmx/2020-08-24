@@ -11,7 +11,7 @@
             c.v originCityName,
             origin,
             d.v destinationProvinceName,
-            e.v destinationCityId,
+            e.v destinationCityName,
             destination,
             order_state orderState,
             postage,

@@ -11,6 +11,14 @@ import java.util.Date;
  */
 public class OrderInfo {
     /**
+     * 页码
+     */
+    private int pageSize;
+    /**
+     * 页数
+     */
+    private int pageNum;
+    /**
      * 角色
      */
     private String role;
@@ -347,5 +355,21 @@ public class OrderInfo {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 }
