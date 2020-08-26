@@ -12,7 +12,7 @@
         where
             is_deleted = 0
             and site_name = #{siteName}
-        <if test="site_id != null and site_id !=''">
+        <if test="siteId != null and siteId !=''">
             and site_id != #{siteId}
         </if>
     </select>

@@ -29,8 +29,8 @@ public class SiteService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addSite(SiteInfo siteInfo){
         // 校验站点是否存在
-        int countUser = siteDao.countSite(siteInfo);
-        if(0 != countUser) {
+        int countSite = siteDao.countSite(siteInfo);
+        if(0 != countSite) {
             return AppResponse.bizError("站点已存在，请重新输入！");
         }
         siteInfo.setSiteId(StringUtil.getCommonCode(2));
