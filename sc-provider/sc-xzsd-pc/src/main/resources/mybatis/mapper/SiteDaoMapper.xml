@@ -87,9 +87,8 @@
         where
             a.is_deleted = 0
             and a.province_id = b.dictionary_id
-            and a.city_id = c.dictionary_id
+            and a.city_id = c.dictionary_id,
             and site_id = #{siteId}
-        order by a.gmt_create desc
     </select>
     <!--修改站点信息-->
     <update id="updateSiteById" parameterType="com.xzsd.pc.site.entity.SiteInfo">
