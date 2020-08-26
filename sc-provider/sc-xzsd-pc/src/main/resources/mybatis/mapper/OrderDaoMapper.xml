@@ -34,7 +34,7 @@
             and order_id = #{orderId}
         </if>
         <if test="account != null and account !=''">
-            and f.name like concat('%',#{account},'%')
+            and f.account like concat('%',#{account},'%')
         </if>
         <if test="phone != null and phone !=''">
             and f.phone like concat('%',#{phone},'%')
