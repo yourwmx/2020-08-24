@@ -40,7 +40,7 @@ public interface SiteDao {
      * 删除站点信息
      * wumaoxing
      */
-    int deleteSite(@Param("listDeleteSiteId") List<String> listDeleteSiteId, @Param("updateSiteId") String updateSiteId);
+    int deleteSite(@Param("listDeleteSiteId") List<String> listDeleteSiteId, @Param("updateUserId") String updateUserId);
     /**
      * 查询站点总数
      * wumaoxing
