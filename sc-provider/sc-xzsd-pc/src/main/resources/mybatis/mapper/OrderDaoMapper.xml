@@ -7,11 +7,11 @@
     <select id="listOrders" parameterType="com.xzsd.pc.order.entity.OrderInfo" resultType="com.xzsd.pc.order.entity.OrderInfo">
         select
             order_id orderId,
-            b.site_name originProvinceName,
-            c.site_name originCityName,
+            b.v originProvinceName,
+            c.v originCityName,
             origin,
-            d.site_name destinationProvinceName,
-            e.site_name destinationCityId,
+            d.v destinationProvinceName,
+            e.v destinationCityId,
             destination,
             order_state orderState,
             postage,
@@ -19,13 +19,13 @@
             f.phone,
             bag_id bagId
         from
-            t_sys_order a,t_sys_site b,t_sys_site c,t_sys_site d,t_sys_site e,t_sys_user f
+            t_sys_order a,t_sys_dictionary b,t_sys_dictionary c,t_sys_dictionary d,t_sys_dictionary e,t_sys_user f
         where
             a.is_deleted = 0
-            and origin_province_id = b.site_id
-            and origin_city_id = c.site_id
-            and destination_province_id = d.site_id
-            and destination_city_id = e.site_id
+            and origin_province_id = b.dictionary_id
+            and origin_city_id = c.dictionary_id
+            and destination_province_id = d.dictionary_id
+            and destination_city_id = e.dictionary_id
             and a.user_id = f.user_id
         <if test="role == 4">
             and user_id = #{userId}
@@ -51,13 +51,13 @@
     <!--查询站点编号列表-->
     <select id="queryNextSiteById" parameterType="java.lang.String" resultType="com.xzsd.pc.site.entity.SiteInfo">
         select
-            site_id siteId,
-            site_name siteName
+            dictionary_id dictionaryId,
+            v
         from
-            t_sys_site
+            t_sys_dictionary
         where
             is_deleted = 0
-            and last_site_id = #{lastSiteId}
+            and last_classify_id = #{lastClassifyId}
     </select>
     <!--在线下单-->
     <insert id="addOrder" parameterType="com.xzsd.pc.order.entity.OrderInfo">
@@ -104,11 +104,11 @@
     <select id="findOrderById" parameterType="java.lang.String" resultType="com.xzsd.pc.order.entity.OrderInfo">
         select
             order_id orderId,
-            b.site_name originProvinceName,
-            c.site_name originCityName,
+            b.v originProvinceName,
+            c.v originCityName,
             origin,
-            d.site_name destinationProvinceName,
-            e.site_name destinationCityId,
+            d.v destinationProvinceName,
+            e.v destinationCityId,
             destination,
             order_state orderState,
             postage,
@@ -116,13 +116,13 @@
             bag_id bagId,
             a.version
         from
-            t_sys_order a,t_sys_site b,t_sys_site c,t_sys_site d,t_sys_site e
+            t_sys_order a,t_sys_dictionary b,t_sys_dictionary c,t_sys_dictionary d,t_sys_dictionary e
         where
             a.is_deleted = 0
-            and origin_province_id = b.site_id
-            and origin_city_id = c.site_id
-            and destination_province_id = d.site_id
-            and destination_city_id = e.site_id
+            and origin_province_id = b.dictionary_id
+            and origin_city_id = c.dictionary_id
+            and destination_province_id = d.dictionary_id
+            and destination_city_id = e.dictionary_id
             and order_id = #{orderId}
         order by a.gmt_create desc
     </select>

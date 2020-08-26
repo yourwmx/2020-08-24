@@ -19,7 +19,7 @@ public interface OrderDao {
      * wumaoxing
      * 2020-08-23 15:58
      */
-    List<SiteInfo> queryNextSiteById(String lastSiteId);
+    List<SiteInfo> queryNextSiteById(String lastClassifyId);
     /**
      * 在线下单
      * wumaoxing

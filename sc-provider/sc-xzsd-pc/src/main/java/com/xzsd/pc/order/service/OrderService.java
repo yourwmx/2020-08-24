@@ -37,8 +37,8 @@ public class OrderService {
      * wumaoxing
      * 2020-08-23 15:58
      */
-    public AppResponse queryNextSiteById(String lastSiteId) {
-        return AppResponse.success("查询成功！", orderDao.queryNextSiteById(lastSiteId));
+    public AppResponse queryNextSiteById(String lastClassifyId) {
+        return AppResponse.success("查询成功！", orderDao.queryNextSiteById(lastClassifyId));
     }
 
     /**

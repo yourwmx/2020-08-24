@@ -50,9 +50,9 @@ public class OrderController {
      * 2020-08-23 15:55
      */
     @RequestMapping("queryNextSiteById")
-    public AppResponse queryNextSiteById(String lastSiteId) {
+    public AppResponse queryNextSiteById(String lastClassifyId) {
         try {
-            return orderService.queryNextSiteById(lastSiteId);
+            return orderService.queryNextSiteById(lastClassifyId);
         } catch (Exception e) {
             logger.error("查询站点编号列表异常", e);
             System.out.println(e.toString());
