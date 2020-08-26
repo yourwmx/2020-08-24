@@ -108,15 +108,15 @@
             c.v originCityName,
             origin,
             d.v destinationProvinceName,
-            e.v destinationCityId,
+            e.v destinationCityName,
             destination,
             order_state orderState,
             postage,
-            user_id userId,
+            account,
             bag_id bagId,
             a.version
         from
-            t_sys_order a,t_sys_dictionary b,t_sys_dictionary c,t_sys_dictionary d,t_sys_dictionary e
+            t_sys_order a,t_sys_dictionary b,t_sys_dictionary c,t_sys_dictionary d,t_sys_dictionary e,t_sys_user f
         where
             a.is_deleted = 0
             and origin_province_id = b.dictionary_id
@@ -124,6 +124,7 @@
             and destination_province_id = d.dictionary_id
             and destination_city_id = e.dictionary_id
             and order_id = #{orderId}
+            and a.user_id = f.user_id
         order by a.gmt_create desc
     </select>
     <!--订单状态修改-->
