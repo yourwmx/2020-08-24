@@ -4,7 +4,6 @@ import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.xzsd.pc.order.entity.OrderInfo;
 import com.xzsd.pc.order.service.OrderService;
-import com.xzsd.pc.user.entity.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -110,4 +109,21 @@ public class OrderController {
             throw e;
         }
     }
+
+    /**
+     * 查询订单总数
+     * wumaoxing
+     * 2020-08-26 19:50
+     */
+    @RequestMapping(value = "queryOrderSum")
+    public AppResponse queryOrderSum(){
+        try {
+            return orderService.queryOrderSum();
+        } catch (Exception e) {
+            logger.error("查询订单总数异常", e);
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
+
 }

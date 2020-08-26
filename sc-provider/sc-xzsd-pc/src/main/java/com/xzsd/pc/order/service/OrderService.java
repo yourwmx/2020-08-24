@@ -88,4 +88,13 @@ public class OrderService {
         }
         return appResponse;
     }
+
+    /**
+     * 查询订单总数
+     * wumaoxing
+     * 2020-08-26 19:52
+     */
+    public AppResponse queryOrderSum(){
+        return AppResponse.success("查询成功！", orderDao.queryOrderSum());
+    }
 }

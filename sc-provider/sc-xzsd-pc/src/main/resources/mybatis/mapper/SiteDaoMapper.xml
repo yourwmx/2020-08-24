@@ -122,4 +122,13 @@
             #{item}
         </foreach>
     </update>
+    <!--查询站点总数-->
+    <select id="querySiteSum" resultType="java.lang.String">
+        select
+            count(*)
+        from
+            t_sys_site
+        where
+            is_deleted = 0
+    </select>
 </mapper>

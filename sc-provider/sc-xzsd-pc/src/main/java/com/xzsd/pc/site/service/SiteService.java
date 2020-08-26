@@ -103,4 +103,13 @@ public class SiteService {
         }
         return appResponse;
     }
+
+    /**
+     * 查询站点总数
+     * wumaoxing
+     * 2020-08-26 19:52
+     */
+    public AppResponse querySiteSum(){
+        return AppResponse.success("查询成功！", siteDao.querySiteSum());
+    }
 }

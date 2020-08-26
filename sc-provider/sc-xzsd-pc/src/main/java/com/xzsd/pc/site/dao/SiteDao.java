@@ -41,4 +41,10 @@ public interface SiteDao {
      * wumaoxing
      */
     int deleteSite(@Param("listDeleteSiteId") List<String> listDeleteSiteId, @Param("updateSiteId") String updateSiteId);
+    /**
+     * 查询站点总数
+     * wumaoxing
+     * 2020-08-26 19:58
+     */
+    String querySiteSum();
 }

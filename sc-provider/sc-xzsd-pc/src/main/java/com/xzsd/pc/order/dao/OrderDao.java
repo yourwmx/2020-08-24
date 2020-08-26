@@ -38,5 +38,10 @@ public interface OrderDao {
      * 2020-08-23 21:33
      */
     int updateOrderState(@Param("listUpdateOrderId") List<String> listUpdateOrderId, @Param("updateUserId") String updateUserId, @Param("orderState") String orderState);
-
+    /**
+     * 查询订单总数
+     * wumaoxing
+     * 2020-08-26 19:54
+     */
+    String queryOrderSum();
 }

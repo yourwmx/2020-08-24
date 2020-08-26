@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.line.dao.LineDao">
+    <!--查询线路总数-->
+    <select id="queryLineSum" resultType="java.lang.String">
+        select
+            count(*)
+        from
+            t_sys_line
+        where
+            is_deleted = 0
+    </select>
+</mapper>

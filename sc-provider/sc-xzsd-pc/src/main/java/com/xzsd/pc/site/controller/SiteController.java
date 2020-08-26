@@ -115,4 +115,21 @@ public class SiteController {
             throw new ScServerException("站点删除错误");
         }
     }
+
+    /**
+     * 查询站点总数
+     * wumaoxing
+     * 2020-08-26 19:56
+     */
+    @RequestMapping(value = "querySiteSum")
+    public AppResponse querySiteSum(){
+        try {
+            return siteService.querySiteSum();
+        } catch (Exception e) {
+            logger.error("查询站点总数异常", e);
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
+
 }

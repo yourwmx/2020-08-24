@@ -151,4 +151,13 @@
             #{item}
         </foreach>
     </update>
+    <!--查询订单总数-->
+    <select id="queryOrderSum" resultType="java.lang.String">
+        select
+            count(*)
+        from
+            t_sys_order
+        where
+            is_deleted = 0
+    </select>
 </mapper>

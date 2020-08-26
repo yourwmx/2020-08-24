@@ -19,6 +19,10 @@ public class OrderInfo {
      */
     private int pageNum;
     /**
+     * 订单总数
+     */
+    private String orderSum;
+    /**
      * 角色
      */
     private String role;
@@ -395,5 +399,13 @@ public class OrderInfo {
 
     public void setReceiverPhone(String receiverPhone) {
         this.receiverPhone = receiverPhone;
+    }
+
+    public String getOrderSum() {
+        return orderSum;
+    }
+
+    public void setOrderSum(String orderSum) {
+        this.orderSum = orderSum;
     }
 }
