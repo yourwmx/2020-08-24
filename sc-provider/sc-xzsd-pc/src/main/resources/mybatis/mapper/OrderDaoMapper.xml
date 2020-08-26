@@ -18,7 +18,7 @@
             f.account,
             f.phone,
             bag_id bagId,
-            a.gmt_create gmtCreate,
+            a.gmt_create gmtCreate
         from
             t_sys_order a,t_sys_dictionary b,t_sys_dictionary c,t_sys_dictionary d,t_sys_dictionary e,t_sys_user f
         where
