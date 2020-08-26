@@ -113,6 +113,7 @@
             order_state orderState,
             postage,
             account,
+            phone,
             bag_id bagId,
             a.version
         from
