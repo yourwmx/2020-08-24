@@ -85,7 +85,7 @@ public class UserService {
         if(0 != countUser) {
             return AppResponse.bizError("用户账号或手机号已存在，请重新输入！");
         }
-        userInfo.setPassword(PasswordUtils.generatePassword(userInfo.getPassword()));
+//        userInfo.setPassword(PasswordUtils.generatePassword(userInfo.getPassword()));
         // 修改用户信息
         int count = userDao.updateUserById(userInfo);
         if (0 == count) {

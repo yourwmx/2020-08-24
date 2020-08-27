@@ -69,6 +69,8 @@
             d.site_name thirdSiteName
         from
             t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
+        where
+            a.is_deleted = 0
             and a.first_site_id = b.site_id
             and a.second_site_id = c.site_id
             and a.third_site_id = d.site_id
@@ -80,4 +82,60 @@
         </if>
             order by a.gmt_create desc
     </select>
+    <!--查询线路详情-->
+    <select id="findLineById" parameterType="java.lang.String" resultType="com.xzsd.pc.line.entity.LineInfo">
+        select
+            a.line_id lineId,
+            a.line_name lineName,
+            b.site_id firstSiteId,
+            b.site_name firstSiteName,
+            c.site_id secondSiteId,
+            c.site_name secondSiteName,
+            d.site_id thirdSiteId,
+            d.site_name thirdSiteName
+            expense,
+            income,
+            profit,
+            version
+        from
+            t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
+        where
+            a.is_deleted = 0
+            and a.first_site_id = b.site_id
+            and a.second_site_id = c.site_id
+            and a.third_site_id = d.site_id
+            and a.line_id = #{lineId}
+    </select>
+    <!--修改线路信息-->
+    <update id="updateLineById" parameterType="com.xzsd.pc.line.entity.LineInfo">
+        update
+            t_sys_line
+        set
+            line_id         = #{lineId},
+            line_name       = #{lineName},
+            first_site_id       = #{firstSiteId},
+            second_site_id      = #{secondSiteId},
+            third_site_id       = #{thirdSiteId},
+            last_modified_by    = #{lastModifiedBy},
+            gmt_modified    = now(),
+            version         = version + 1
+        where
+            site_id = #{siteId}
+            and version = #{version}
+    </update>
+    <!--删除线路-->
+    <update id="deleteLine" parameterType="com.xzsd.pc.line.entity.LineInfo">
+        update
+            t_sys_line
+        set
+            is_deleted = 1,
+            gmt_modified = now(),
+            last_modified_by = #{updateUserId}
+            version = version + 1
+        where
+            line_id in
+            <foreach item="item" index="index" collection="listDeleteLineId" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+    </update>
 </mapper>

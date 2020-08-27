@@ -72,4 +72,56 @@ public class LineController {
             throw e;
         }
     }
+
+    /**
+     * 查询线路详情
+     * wumaoxing
+     * 2020-08-27 15:20
+     */
+    @RequestMapping(value = "findLineById")
+    public AppResponse findLineById(String lineId) {
+        LineInfo lineInfo = null;
+        try {
+            lineInfo = lineService.findLineById(lineId);
+        } catch (Exception e) {
+            logger.error("线路查询错误", e);
+            throw new ScServerException("查询错误，请重试");
+        }
+        return AppResponse.success("查询成功", lineInfo);
+    }
+
+    /**
+     * 修改线路
+     * wumaoxing
+     * 2020-08-27 15:28
+     */
+    @PostMapping("updateLineById")
+    public AppResponse updateLineById(LineInfo lineInfo) {
+        try {
+            //获取用户id
+            String userId = SecurityUtils.getCurrentUserId();
+            lineInfo.setLastModifiedBy(userId);
+            return lineService.updateLineById(lineInfo);
+        } catch (Exception e) {
+            logger.error("修改线路信息错误", e);
+            throw new ScServerException("系统错误，请重试");
+        }
+    }
+
+    /**
+     * 删除线路
+     * wumaoxing
+     * 2020-08-27 15:29
+     */
+    @PostMapping("deleteLine")
+    public AppResponse deleteLine(String lineId) {
+        try {
+            //获取用户id
+            String updateUserId = SecurityUtils.getCurrentUserId();
+            return lineService.deleteLine(lineId,updateUserId);
+        } catch (Exception e) {
+            logger.error("线路删除错误", e);
+            throw new ScServerException("线路删除错误");
+        }
+    }
 }

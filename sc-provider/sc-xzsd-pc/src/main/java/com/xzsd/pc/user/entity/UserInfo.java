@@ -57,6 +57,10 @@ public class UserInfo {
      */
     private String photo;
     /**
+     * 站点编号
+     */
+    private String siteId;
+    /**
      * 删除标记 0未删 1删
      */
     private int isDeleted;
@@ -223,5 +227,13 @@ public class UserInfo {
 
     public void setPageNum(int pageNum) {
         this.pageNum = pageNum;
+    }
+
+    public String getSiteId() {
+        return siteId;
+    }
+
+    public void setSiteId(String siteId) {
+        this.siteId = siteId;
     }
 }

@@ -1,6 +1,7 @@
 package com.xzsd.pc.line.dao;
 
 import com.xzsd.pc.line.entity.LineInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,4 +30,21 @@ public interface LineDao {
      * 2020-08-27 11:55
      */
     List<LineInfo> listLines(LineInfo lineInfo);
+    /**
+     * 查询线路详情
+     * wumaoxing
+     * 2020-08-27 15:24
+     */
+    LineInfo findLineById(String lineId);
+    /**
+     * 修改线路信息
+     * wumaoxing
+     * 2020-08-25 13:24
+     */
+    int updateLineById(LineInfo lineInfo);
+    /**
+     * 删除线路信息
+     * wumaoxing
+     */
+    int deleteLine(@Param("listDeleteLineId") List<String> listDeleteLineId, @Param("updateUserId") String updateUserId);
 }
