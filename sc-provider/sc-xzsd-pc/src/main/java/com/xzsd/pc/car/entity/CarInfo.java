@@ -32,6 +32,10 @@ public class CarInfo {
      */
     private String userId;
     /**
+     * 账号
+     */
+    private String account;
+    /**
      * 创建人
      */
     private String createBy;
@@ -146,5 +150,13 @@ public class CarInfo {
 
     public void setPageNum(int pageNum) {
         this.pageNum = pageNum;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }
