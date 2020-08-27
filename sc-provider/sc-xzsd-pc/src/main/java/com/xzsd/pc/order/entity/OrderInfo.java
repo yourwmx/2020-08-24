@@ -1,5 +1,6 @@
 package com.xzsd.pc.order.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -113,12 +114,12 @@ public class OrderInfo {
     /**
      * 付款时间起
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date payTimeStart;
     /**
      * 付款时间止
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date payTimeEnd;
     /**
      * 删除标记 0未删 1删
@@ -257,6 +258,7 @@ public class OrderInfo {
         this.createBy = createBy;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     public Date getGmtCreate() {
         return gmtCreate;
     }

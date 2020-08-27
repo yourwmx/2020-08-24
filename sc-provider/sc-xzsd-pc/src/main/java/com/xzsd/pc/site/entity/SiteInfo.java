@@ -42,6 +42,10 @@ public class SiteInfo {
      */
     private String cityName;
     /**
+     * 站长
+     */
+    private String account;
+    /**
      * 删除标记 0未删 1删
      */
     private int isDeleted;
@@ -176,5 +180,13 @@ public class SiteInfo {
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

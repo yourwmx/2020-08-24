@@ -1,5 +1,7 @@
 package com.xzsd.pc.line.dao;
 
+import com.xzsd.pc.line.entity.LineInfo;
+
 public interface LineDao {
     /**
      * 查询线路总数
@@ -7,4 +9,16 @@ public interface LineDao {
      * 2020-08-26 19:54
      */
     String queryLineSum();
+    /**
+     * 校验线路是否存在
+     * wumaoxing
+     * 2020-08-24 11:19
+     */
+    int countLine(LineInfo lineInfo);
+    /**
+     * 新增线路
+     * wumaoxing
+     * 2020-08-24 11:20
+     */
+    int addLine(LineInfo lineInfo);
 }

@@ -1,9 +1,13 @@
 package com.xzsd.pc.line.controller;
 
+import com.neusoft.core.exception.ScServerException;
+import com.neusoft.security.client.utils.SecurityUtils;
+import com.xzsd.pc.line.entity.LineInfo;
 import com.xzsd.pc.line.service.LineService;
 import com.xzsd.pc.utils.AppResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,4 +37,24 @@ public class LineController {
             throw e;
         }
     }
+
+    /**
+     * 新增线路
+     * wumaoxing
+     * 2020-08-27 9:28
+     */
+    @PostMapping(value = "addLine")
+    public AppResponse addLine(LineInfo lineInfo){
+        try {
+            //获取用户id
+            String userId = SecurityUtils.getCurrentUserId();
+            lineInfo.setCreateBy(userId);
+            AppResponse appResponse = lineService.addLine(lineInfo);
+            return appResponse;
+        } catch (Exception e) {
+            logger.error("新增线路失败", e);
+            throw new ScServerException(e);
+        }
+    }
+
 }

@@ -12,4 +12,48 @@
         where
             is_deleted = 0
     </select>
+    <!--校验线路是否存在-->
+    <select id="countLine" parameterType="com.xzsd.pc.line.entity.LinInfo" resultType="int">
+        select
+            count(*)
+        from
+            t_sys_line
+        where
+            is_deleted = 0
+            and line_name = #{lineName}
+        <if test="lineId != null and lineId !=''">
+            and line_id != #{lineId}
+        </if>
+    </select>
+    <!--新增线路-->
+    <insert id="addLine" parameterType="com.xzsd.pc.line.entity.LineInfo">
+        insert into t_sys_line
+            (
+            line_id,
+            line_name,
+            first_site_id,
+            second_site_id,
+            third_site_id,
+            is_deleted,
+            create_by,
+            gmt_create,
+            last_modified_by,
+            gmt_modified,
+            version
+            )
+        values
+            (
+            #{lineId},
+            #{lineName},
+            #{firstSiteId},
+            #{secondSiteId},
+            #{thirdSiteId},
+            0,
+            #{createBy},
+            now(),
+            #{lastModifiedBy},
+            now(),
+            0
+            )
+    </insert>
 </mapper>

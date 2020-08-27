@@ -15,7 +15,7 @@ public class LineInfo {
     /**
      * 线路名称
      */
-    private String linrName;
+    private String lineName;
     /**
      * 站点一编号
      */
@@ -77,12 +77,12 @@ public class LineInfo {
         this.lineId = lineId;
     }
 
-    public String getLinrName() {
-        return linrName;
+    public String getLineName() {
+        return lineName;
     }
 
-    public void setLinrName(String linrName) {
-        this.linrName = linrName;
+    public void setLineName(String lineName) {
+        this.lineName = lineName;
     }
 
     public String getFirstSiteId() {
