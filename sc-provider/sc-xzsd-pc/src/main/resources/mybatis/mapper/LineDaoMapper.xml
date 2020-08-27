@@ -61,27 +61,22 @@
         select
             a.line_id lineId,
             a.line_name lineName,
-
+            b.site_id firstSiteId,
+            b.site_name firstSiteName,
+            c.site_id secondSiteId,
+            c.site_name secondSiteName,
+            d.site_id thirdSiteId,
+            d.site_name thirdSiteName
         from
-            t_sys_site a left join t_sys_user b
-        on
-            a.is_deleted = 0
-            and b.is_deleted = 0
-            and b.site_id = a.site_id
-        <if test="siteId != null and siteId !=''">
-            and site_id = #{siteId}
+            t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
+            and a.first_site_id = b.site_id
+            and a.second_site_id = c.site_id
+            and a.third_site_id = d.site_id
+        <if test="lineId != null and lineId !=''">
+            and line_id = #{lineId}
         </if>
-        <if test="siteName != null and siteName !=''">
-            and site_name = #{siteName}
-        </if>
-        <if test="account != null and account !=''">
-            and account = #{account}
-        </if>
-        <if test="provinceId != null and provinceId !=''">
-            and province_id = #{provinceId}
-        </if>
-        <if test="cityId != null and cityId !=''">
-            and city_id = #{cityId}
+        <if test="lineName != null and lineName !=''">
+            and line_name = #{lineName}
         </if>
             order by a.gmt_create desc
     </select>
