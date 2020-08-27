@@ -34,6 +34,9 @@
             first_site_id,
             second_site_id,
             third_site_id,
+            expense,
+            income,
+            profit,
             is_deleted,
             create_by,
             gmt_create,
@@ -48,6 +51,9 @@
             #{firstSiteId},
             #{secondSiteId},
             #{thirdSiteId},
+            0,
+            0,
+            0,
             0,
             #{createBy},
             now(),
@@ -64,16 +70,13 @@
             b.site_id firstSiteId,
             b.site_name firstSiteName,
             c.site_id secondSiteId,
-            c.site_name secondSiteName,
-            d.site_id thirdSiteId,
-            d.site_name thirdSiteName
+            c.site_name secondSiteName
         from
-            t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
+            t_sys_line a,t_sys_site b,t_sys_site c
         where
             a.is_deleted = 0
             and a.first_site_id = b.site_id
             and a.second_site_id = c.site_id
-            and a.third_site_id = d.site_id
         <if test="lineId != null and lineId !=''">
             and line_id = #{lineId}
         </if>
@@ -92,11 +95,11 @@
             c.site_id secondSiteId,
             c.site_name secondSiteName,
             d.site_id thirdSiteId,
-            d.site_name thirdSiteName
+            d.site_name thirdSiteName,
             expense,
             income,
             profit,
-            version
+            a.version
         from
             t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
         where
@@ -116,11 +119,14 @@
             first_site_id       = #{firstSiteId},
             second_site_id      = #{secondSiteId},
             third_site_id       = #{thirdSiteId},
+            expense             = #{expense},
+            income              = #{income},
+            profit              = #{profit},
             last_modified_by    = #{lastModifiedBy},
             gmt_modified    = now(),
             version         = version + 1
         where
-            site_id = #{siteId}
+            line_id = #{lineId}
             and version = #{version}
     </update>
     <!--删除线路-->
