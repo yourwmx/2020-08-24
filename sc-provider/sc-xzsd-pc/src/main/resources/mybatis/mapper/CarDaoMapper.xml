@@ -89,7 +89,7 @@
             t_sys_car a,t_sys_line b
         where
             a.is_deleted = 0
-            and a.line_id = b.line_id
+            and a.car_id = b.car_id
     </select>
     <!--修改车辆信息-->
     <update id="updateCarById" parameterType="com.xzsd.pc.car.entity.CarInfo">
