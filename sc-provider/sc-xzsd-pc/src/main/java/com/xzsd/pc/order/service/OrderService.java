@@ -3,6 +3,7 @@ package com.xzsd.pc.order.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
+import com.neusoft.util.RandomUtil;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.order.dao.OrderDao;
 import com.xzsd.pc.order.entity.OrderInfo;
@@ -54,7 +55,7 @@ public class OrderService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addOrder(OrderInfo orderInfo){
-        orderInfo.setOrderId(StringUtil.getCommonCode(2));
+        orderInfo.setOrderId(RandomUtil.radmonkey(6));
         // 在线下单
         int count = orderDao.addOrder(orderInfo);
         if(0 == count) {
