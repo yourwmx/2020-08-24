@@ -13,7 +13,7 @@
             is_deleted = 0
     </select>
     <!--校验线路是否存在-->
-    <select id="countLine" parameterType="com.xzsd.pc.line.entity.LinInfo" resultType="int">
+    <select id="countLine" parameterType="com.xzsd.pc.line.entity.LineInfo" resultType="int">
         select
             count(*)
         from
@@ -56,4 +56,33 @@
             0
             )
     </insert>
+    <!--查询线路列表-->
+    <select id="listLines" parameterType="com.xzsd.pc.line.entity.LineInfo" resultType="com.xzsd.pc.line.entity.LineInfo">
+        select
+            a.line_id lineId,
+            a.line_name lineName,
+
+        from
+            t_sys_site a left join t_sys_user b
+        on
+            a.is_deleted = 0
+            and b.is_deleted = 0
+            and b.site_id = a.site_id
+        <if test="siteId != null and siteId !=''">
+            and site_id = #{siteId}
+        </if>
+        <if test="siteName != null and siteName !=''">
+            and site_name = #{siteName}
+        </if>
+        <if test="account != null and account !=''">
+            and account = #{account}
+        </if>
+        <if test="provinceId != null and provinceId !=''">
+            and province_id = #{provinceId}
+        </if>
+        <if test="cityId != null and cityId !=''">
+            and city_id = #{cityId}
+        </if>
+            order by a.gmt_create desc
+    </select>
 </mapper>

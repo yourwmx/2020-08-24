@@ -1,5 +1,7 @@
 package com.xzsd.pc.line.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xzsd.pc.line.dao.LineDao;
 import com.xzsd.pc.line.entity.LineInfo;
 import com.xzsd.pc.utils.AppResponse;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class LineService {
@@ -45,5 +48,16 @@ public class LineService {
         return AppResponse.success("新增成功！");
     }
 
-
+    /**
+     * 查询线路列表
+     * wumaoxing
+     * 2020-08-27 10:39
+     */
+    public AppResponse listLines(LineInfo lineInfo) {
+        PageHelper.startPage(lineInfo.getPageNum(), lineInfo.getPageSize());
+        List<LineInfo> lineInfoList = lineDao.listLines(lineInfo);
+        // 包装Page对象
+        PageInfo<LineInfo> pageData = new PageInfo<LineInfo>(lineInfoList);
+        return AppResponse.success("查询成功！",pageData);
+    }
 }

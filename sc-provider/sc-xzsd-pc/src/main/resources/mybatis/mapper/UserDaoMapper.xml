@@ -27,6 +27,7 @@
             email,
             idCard,
             photo,
+            site_id,
             is_deleted,
             create_by,
             gmt_create,
@@ -46,6 +47,7 @@
             #{email},
             #{idCard},
             #{photo},
+            #{siteId},
             0,
             #{createBy},
             now(),
@@ -69,6 +71,7 @@
             t_sys_user
         where
             is_deleted = 0
+            and role != 4
         <if test="account != null and account != ''">
             and account = #{account}
         </if>
@@ -92,6 +95,7 @@
             idCard,
             password,
             photo,
+            site_id siteId,
             role,
             version
         from
@@ -125,6 +129,7 @@
             phone           = #{phone},
             email           = #{email},
             idCard          = #{idCard},
+            site_id         = #{siteId},
             role            = #{role},
             last_modified_by    = #{lastModifiedBy},
             gmt_modified    = now(),

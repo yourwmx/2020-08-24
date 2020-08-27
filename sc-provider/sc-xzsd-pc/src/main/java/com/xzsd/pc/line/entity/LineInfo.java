@@ -9,6 +9,14 @@ import java.util.Date;
  */
 public class LineInfo {
     /**
+     * 页码
+     */
+    private int pageSize;
+    /**
+     * 页数
+     */
+    private int pageNum;
+    /**
      * 线路编号
      */
     private String lineId;
@@ -21,13 +29,25 @@ public class LineInfo {
      */
     private String firstSiteId;
     /**
+     * 站点一名称
+     */
+    private String firstSiteName;
+    /**
      * 站点二编号
      */
     private String secondSiteId;
     /**
+     * 站点二名称
+     */
+    private String secondSiteName;
+    /**
      * 站点三编号
      */
     private String thirdSiteId;
+    /**
+     * 站点三名称
+     */
+    private String thirdSiteName;
     /**
      * 支出
      */
@@ -187,5 +207,45 @@ public class LineInfo {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public String getFirstSiteName() {
+        return firstSiteName;
+    }
+
+    public void setFirstSiteName(String firstSiteName) {
+        this.firstSiteName = firstSiteName;
+    }
+
+    public String getSecondSiteName() {
+        return secondSiteName;
+    }
+
+    public void setSecondSiteName(String secondSiteName) {
+        this.secondSiteName = secondSiteName;
+    }
+
+    public String getThirdSiteName() {
+        return thirdSiteName;
+    }
+
+    public void setThirdSiteName(String thirdSiteName) {
+        this.thirdSiteName = thirdSiteName;
     }
 }

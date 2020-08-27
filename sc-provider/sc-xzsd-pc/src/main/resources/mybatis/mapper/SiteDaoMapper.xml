@@ -79,6 +79,8 @@
         select
             a.site_id siteId,
             a.site_name siteName,
+            a.province_id provinceId,
+            a.city_id cityId,
             b.v provinceName,
             c.v cityName
             a.version

@@ -57,4 +57,19 @@ public class LineController {
         }
     }
 
+    /**
+     * 查询线路列表
+     * wumaoxing
+     * 2020-08-27 10:38
+     */
+    @RequestMapping("listLines")
+    public AppResponse listLines(LineInfo lineInfo) {
+        try {
+            return lineService.listLines(lineInfo);
+        } catch (Exception e) {
+            logger.error("查询站点列表异常", e);
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
 }
