@@ -41,7 +41,7 @@ public class CarService {
         if(0 != countCar) {
             return AppResponse.bizError("车辆已存在，请重新输入！");
         }
-        carInfo.setLineId(StringUtil.getCommonCode(2));
+        carInfo.setCarId(StringUtil.getCommonCode(2));
         // 新增站点
         int count = carDao.addCar(carInfo);
         if(0 == count) {
