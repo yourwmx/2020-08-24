@@ -12,4 +12,114 @@
         where
             is_deleted = 0
     </select>
+    <!--校验车辆是否存在-->
+    <select id="countCar" parameterType="com.xzsd.pc.car.entity.CarInfo" resultType="int">
+        select
+            count(*)
+        from
+            t_sys_car
+        where
+            is_deleted = 0
+            and car_name = #{carName}
+        <if test="carId != null and carId !=''">
+            and car_id != #{carId}
+        </if>
+    </select>
+    <!--新增车辆-->
+    <insert id="addCar" parameterType="com.xzsd.pc.car.entity.CarInfo">
+        insert into t_sys_car
+            (
+            car_id,
+            car_name,
+            line_id,
+            user_id,
+            is_deleted,
+            create_by,
+            gmt_create,
+            last_modified_by,
+            gmt_modified,
+            version
+            )
+        values
+            (
+            #{carId},
+            #{carName},
+            #{lineId},
+            #{userId},
+            0,
+            #{createBy},
+            now(),
+            #{lastModifiedBy},
+            now(),
+            0
+            )
+    </insert>
+    <!--查询车辆列表-->
+    <select id="listCars" parameterType="com.xzsd.pc.car.entity.CarInfo" resultType="com.xzsd.pc.car.entity.CarInfo">
+        select
+            a.car_id carId,
+            a.car_name carName,
+            a.line_id lineId,
+            b.line_name lineName,
+            c.account
+        from
+            t_sys_car a,t_sys_line b,t_sys_user c
+        where
+            a.is_deleted = 0
+            and a.line_id = b.line_id
+            and a.user_id = c.user_id
+        <if test="carId != null and carId !=''">
+            and car_id = #{carId}
+        </if>
+        <if test="carName != null and carName !=''">
+            and car_name = #{carName}
+        </if>
+            order by a.gmt_create desc
+    </select>
+    <!--查询车辆详情-->
+    <select id="findCarById" parameterType="java.lang.String" resultType="com.xzsd.pc.car.entity.CarInfo">
+        select
+            a.car_id carId,
+            a.car_name carName,
+            a.line_id lineId,
+            b.line_name lineName,
+            a.user_id userId,
+            a.version
+        from
+            t_sys_car a,t_sys_line b
+        where
+            a.is_deleted = 0
+            and a.line_id = b.line_id
+    </select>
+    <!--修改车辆信息-->
+    <update id="updateCarById" parameterType="com.xzsd.pc.car.entity.CarInfo">
+        update
+            t_sys_car
+        set
+            car_id         = #{carId},
+            car_name       = #{carName},
+            line_id       = #{lineId},
+            user_id      = #{userId},
+            last_modified_by    = #{lastModifiedBy},
+            gmt_modified    = now(),
+            version         = version + 1
+        where
+            car_id = #{carId}
+            and version = #{version}
+    </update>
+    <!--删除车辆-->
+    <update id="deleteCar" parameterType="com.xzsd.pc.car.entity.CarInfo">
+        update
+            t_sys_car
+        set
+            is_deleted = 1,
+            gmt_modified = now(),
+            last_modified_by = #{updateUserId},
+            version = version + 1
+        where
+            car_id in
+        <foreach item="item" index="index" collection="listDeleteCarId" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

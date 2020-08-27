@@ -136,7 +136,7 @@
         set
             is_deleted = 1,
             gmt_modified = now(),
-            last_modified_by = #{updateUserId}
+            last_modified_by = #{updateUserId},
             version = version + 1
         where
             line_id in

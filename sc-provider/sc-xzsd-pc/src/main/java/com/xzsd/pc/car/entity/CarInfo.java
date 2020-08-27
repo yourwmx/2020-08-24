@@ -4,6 +4,14 @@ import java.util.Date;
 
 public class CarInfo {
     /**
+     * 页码
+     */
+    private int pageSize;
+    /**
+     * 页数
+     */
+    private int pageNum;
+    /**
      * 车辆编号
      */
     private String carId;
@@ -11,6 +19,18 @@ public class CarInfo {
      * 车辆名称
      */
     private String carName;
+    /**
+     * 线路编号
+     */
+    private String lineId;
+    /**
+     * 线路名称
+     */
+    private String lineName;
+    /**
+     * 用户编号
+     */
+    private String userId;
     /**
      * 创建人
      */
@@ -86,5 +106,45 @@ public class CarInfo {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getLineId() {
+        return lineId;
+    }
+
+    public void setLineId(String lineId) {
+        this.lineId = lineId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getLineName() {
+        return lineName;
+    }
+
+    public void setLineName(String lineName) {
+        this.lineName = lineName;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 }
