@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.record.dao.RecordDao">
+    <!--增加订单记录-->
+    <insert id="addRecord" parameterType="com.xzsd.pc.record.entity.RecordInfo">
+        insert into t_sys_record
+            (
+            order_id,
+            site_id,
+            order_state,
+            is_deleted,
+            create_by,
+            gmt_create,
+            last_modified_by,
+            gmt_modified,
+            version
+            )
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item},
+            #{siteId},
+            #{orderState},
+            0,
+            #{createBy},
+            now(),
+            #{lastModifiedBy},
+            now(),
+            0
+            )
+        </foreach>
+    </insert>
+</mapper>

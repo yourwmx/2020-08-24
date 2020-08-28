@@ -91,7 +91,6 @@ public class UserService {
         if (tmpPassword.compareTo(userInfo.getPassword()) != 0){
             userInfo.setPassword(PasswordUtils.generatePassword(userInfo.getPassword()));
         }
-        // 修改用户信息
         int count = userDao.updateUserById(userInfo);
         if (0 == count) {
             appResponse = AppResponse.versionError("数据有变化，请刷新！");

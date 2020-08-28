@@ -7,6 +7,9 @@ import com.neusoft.util.RandomUtil;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.order.dao.OrderDao;
 import com.xzsd.pc.order.entity.OrderInfo;
+import com.xzsd.pc.record.dao.RecordDao;
+import com.xzsd.pc.record.entity.RecordInfo;
+import com.xzsd.pc.user.dao.UserDao;
 import com.xzsd.pc.user.entity.UserInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +28,12 @@ public class OrderService {
 
     @Resource
     private OrderDao orderDao;
+
+    @Resource
+    private RecordDao recordDao;
+
+    @Resource
+    private UserDao userDao;
 
     /**
      * 查件
@@ -82,10 +91,16 @@ public class OrderService {
     public AppResponse updateOrderState(String ordersId, String updateUserId, String orderState) {
         List<String> listUpdateOrderId = Arrays.asList(ordersId.split(","));
         AppResponse appResponse = AppResponse.success("订单状态修改成功！");
-        // 订单状态修改
-        int count = orderDao.updateOrderState(listUpdateOrderId, updateUserId, orderState);
+        // 增加订单记录
+        String siteId = userDao.findUserById(updateUserId).getSiteId();
+        int count = recordDao.addRecord(listUpdateOrderId, updateUserId, orderState, siteId);
         if (count == 0) {
-            appResponse = AppResponse.bizError("订单状态修改失败，请重试！");
+            return AppResponse.bizError("订单记录增加失败，请重试！");
+        }
+        // 订单状态修改
+        count = orderDao.updateOrderState(listUpdateOrderId, updateUserId, orderState);
+        if (count == 0) {
+            return AppResponse.bizError("订单状态修改失败，请重试！");
         }
         return appResponse;
     }
