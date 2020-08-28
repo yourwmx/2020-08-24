@@ -62,10 +62,10 @@
             and site_id = #{siteId}
         </if>
         <if test="siteName != null and siteName !=''">
-            and site_name = #{siteName}
+            and site_name like concat('%',#{nameName},'%')
         </if>
         <if test="account != null and account !=''">
-            and account = #{account}
+            and account like concat('%',#{account},'%')
         </if>
         <if test="provinceId != null and provinceId !=''">
             and province_id = #{provinceId}

@@ -81,7 +81,7 @@
             and line_id = #{lineId}
         </if>
         <if test="lineName != null and lineName !=''">
-            and line_name = #{lineName}
+            and line_name like concat('%',#{lineName},'%')
         </if>
             order by a.gmt_create desc
     </select>

@@ -72,7 +72,7 @@
             and car_id = #{carId}
         </if>
         <if test="carName != null and carName !=''">
-            and car_name = #{carName}
+            and car_name like concat('%',#{carName},'%')
         </if>
             order by a.gmt_create desc
     </select>

@@ -12,6 +12,9 @@
         where 
             is_deleted = 0
             and account = #{account}
+        <if test="userId != null and userId !=''">
+            and user_id != #{userId}
+        </if>
     </select>
     <!--新增用户-->
     <insert id="addUser" parameterType="com.xzsd.pc.user.entity.UserInfo">
@@ -73,10 +76,10 @@
             is_deleted = 0
             and role != 4
         <if test="account != null and account != ''">
-            and account = #{account}
+            and account like concat('%',#{account},'%')
         </if>
         <if test="name != null and name != ''">
-            and name = #{name}
+            and name like concat('%',#{name},'%')
         </if>
         <if test="role != null and role != ''">
             and role = #{role}
