@@ -1,6 +1,7 @@
 package com.xzsd.pc.car.dao;
 
 import com.xzsd.pc.car.entity.CarInfo;
+import com.xzsd.pc.user.entity.UserInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -48,4 +49,10 @@ public interface CarDao {
      * 2020-08-27 17:21
      */
     int deleteCar(@Param("listDeleteCarId") List<String> listDeleteCarId, @Param("updateUserId") String updateUserId);
+    /**
+     * 查询司机列表
+     * wumaoxing
+     * 2020-08-28 11:15
+     */
+    UserInfo listDrivers(String userId);
 }

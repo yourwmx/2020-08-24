@@ -124,4 +124,21 @@ public class CarController {
             throw new ScServerException("车辆删除错误");
         }
     }
+
+
+    /**
+     * 查询司机列表
+     * wumaoxing
+     * 2020-08-27 17:08
+     */
+    @RequestMapping("listDrivers")
+    public AppResponse listDrivers(String userId) {
+        try {
+            return carService.listDrivers(userId);
+        } catch (Exception e) {
+            logger.error("查询司机异常", e);
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
 }

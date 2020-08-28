@@ -111,4 +111,13 @@ public class CarService {
         }
         return appResponse;
     }
+
+    /**
+     * 查询司机列表
+     * wumaoxing
+     * 2020-08-28 11:15
+     */
+    public AppResponse listDrivers(String userId){
+        return AppResponse.success("查询成功！", carDao.listDrivers(userId));
+    }
 }
