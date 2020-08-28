@@ -157,6 +157,9 @@
             t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
         where
             a.is_deleted = 0
+            and a.first_site_id = b.site_id
+            and a.second_site_id = c.site_id
+            and a.third_site_id = d.site_id
             and a.line_id = #{lineId}
     </select>
 </mapper>
