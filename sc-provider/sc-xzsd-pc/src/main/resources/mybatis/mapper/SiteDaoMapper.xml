@@ -54,9 +54,10 @@
         from
             t_sys_site a left join t_sys_user b
         on
-            a.is_deleted = 0
-            and b.is_deleted = 0
+            b.is_deleted = 0
             and b.site_id = a.site_id
+        where
+            a.is_deleted = 0
         <if test="siteId != null and siteId !=''">
             and site_id = #{siteId}
         </if>
@@ -72,7 +73,7 @@
         <if test="cityId != null and cityId !=''">
             and city_id = #{cityId}
         </if>
-        order by a.gmt_create desc
+            order by a.gmt_create desc
     </select>
     <!--查询站点详情-->
     <select id="findSiteById" parameterType="java.lang.String" resultType="com.xzsd.pc.site.entity.SiteInfo">
@@ -115,7 +116,7 @@
         set
             is_deleted = 1,
             gmt_modified = now(),
-            last_modified_by = #{updateUserId}
+            last_modified_by = #{updateUserId},
             version = version + 1
         where
             site_id in
