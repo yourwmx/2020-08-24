@@ -47,4 +47,10 @@ public interface LineDao {
      * wumaoxing
      */
     int deleteLine(@Param("listDeleteLineId") List<String> listDeleteLineId, @Param("updateUserId") String updateUserId);
+    /**
+     * 查询线路上的站点
+     * wumaoxing
+     * 2020-08-28 17:23
+     */
+    LineInfo querySiteByLine(String lineId);
 }

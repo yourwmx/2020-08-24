@@ -6,39 +6,38 @@
     <!--查件-->
     <select id="listOrders" parameterType="com.xzsd.pc.order.entity.OrderInfo" resultType="com.xzsd.pc.order.entity.OrderInfo">
         select
-            order_id orderId,
-            b.v originProvinceName,
-            c.v originCityName,
-            origin,
-            d.v destinationProvinceName,
-            e.v destinationCityName,
-            destination,
-            order_state orderState,
+            a.order_id orderId,
+            b.line_name lineName,
+            c.site_name originSiteName,
+            d.site_name destinationSiteName,
+            a.receiver_name receiverName,
+            a.receiver_phone receiverPhone,
+            weight,
             postage,
-            f.account,
-            f.phone,
+            order_state orderState,
             bag_id bagId,
+            e.account,
+            e.phone,
             a.gmt_create gmtCreate
         from
-            t_sys_order a,t_sys_dictionary b,t_sys_dictionary c,t_sys_dictionary d,t_sys_dictionary e,t_sys_user f
+            t_sys_order a,t_sys_line b,t_sys_site c,t_sys_site d,t_sys_user e
         where
             a.is_deleted = 0
-            and origin_province_id = b.dictionary_id
-            and origin_city_id = c.dictionary_id
-            and destination_province_id = d.dictionary_id
-            and destination_city_id = e.dictionary_id
-            and a.user_id = f.user_id
+            and a.line_id = b.line_id
+            and a.origin_site_id = c.site_id
+            and a.destination_site_id = d.site_id
+            and a.user_id = e.user_id
         <if test="role == 4">
-            and user_id = #{userId}
+            and a.user_id = #{userId}
         </if>
         <if test="orderId != null and orderId !=''">
             and order_id = #{orderId}
         </if>
         <if test="account != null and account !=''">
-            and f.account like concat('%',#{account},'%')
+            and e.account like concat('%',#{account},'%')
         </if>
         <if test="phone != null and phone !=''">
-            and f.phone like concat('%',#{phone},'%')
+            and e.phone like concat('%',#{phone},'%')
         </if>
         <if test="orderState != null and orderState !=''">
             and order_state = #{orderState}
@@ -65,17 +64,15 @@
         insert into t_sys_order
             (
                 order_id,
-                origin_province_id,
-                origin_city_id,
-                origin,
-                destination_province_id,
-                destination_city_id,
-                destination,
-                order_state,
-                postage,
-                user_id,
+                line_id,
+                origin_site_id,
+                destination_site_id,
                 receiver_name,
                 receiver_phone,
+                weight,
+                postage,
+                order_state,
+                user_id,
                 is_deleted,
                 create_by,
                 gmt_create,
@@ -86,17 +83,15 @@
         values
             (
                 #{orderId},
-                #{originProvinceId},
-                #{originCityId},
-                #{origin},
-                #{destinationProvinceId},
-                #{destinationCityId},
-                #{destination},
-                0,
-                #{postage},
-                #{userId},
+                #{lineId},
+                #{originSiteId},
+                #{destinationSiteId},
                 #{receiverName},
                 #{receiverPhone},
+                #{weight},
+                #{postage},
+                0,
+                #{userId},
                 0,
                 #{createBy},
                 now(),
@@ -106,35 +101,18 @@
             )
     </insert>
     <!--订单详情-->
-    <select id="findOrderById" parameterType="java.lang.String" resultType="com.xzsd.pc.order.entity.OrderInfo">
+    <select id="findOrderById" parameterType="java.lang.String" resultType="com.xzsd.pc.record.entity.RecordInfo">
         select
             order_id orderId,
-            b.v originProvinceName,
-            c.v originCityName,
-            origin,
-            d.v destinationProvinceName,
-            e.v destinationCityName,
-            destination,
-            receiver_name receiverName,
-            receiver_phone receiverPhone,
+            site_id siteId,
             order_state orderState,
-            postage,
-            account,
-            phone,
-            bag_id bagId,
-            a.gmt_create gmtCreate,
-            a.version
+            gmt_create
         from
-            t_sys_order a,t_sys_dictionary b,t_sys_dictionary c,t_sys_dictionary d,t_sys_dictionary e,t_sys_user f
+            t_sys_record
         where
-            a.is_deleted = 0
-            and origin_province_id = b.dictionary_id
-            and origin_city_id = c.dictionary_id
-            and destination_province_id = d.dictionary_id
-            and destination_city_id = e.dictionary_id
+            is_deleted = 0
             and order_id = #{orderId}
-            and a.user_id = f.user_id
-        order by a.gmt_create desc
+        order by gmt_create desc
     </select>
     <!--订单状态修改-->
     <update id="updateOrderState" parameterType="com.xzsd.pc.order.entity.OrderInfo">

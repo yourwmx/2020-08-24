@@ -124,4 +124,20 @@ public class LineController {
             throw new ScServerException("线路删除错误");
         }
     }
+
+    /**
+     * 查询线路上的站点
+     * wumaoxing
+     * 2020-08-28 17:20
+     */
+    @RequestMapping(value = "querySiteByLine")
+    public AppResponse querySiteByLine(String lineId){
+        try {
+            return lineService.querySiteByLine(lineId);
+        } catch (Exception e) {
+            logger.error("查询线路上的站点异常", e);
+            System.out.println(e.toString());
+            throw e;
+        }
+    }
 }

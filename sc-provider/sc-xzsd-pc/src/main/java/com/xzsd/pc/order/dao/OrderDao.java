@@ -1,6 +1,7 @@
 package com.xzsd.pc.order.dao;
 
 import com.xzsd.pc.order.entity.OrderInfo;
+import com.xzsd.pc.record.entity.RecordInfo;
 import com.xzsd.pc.site.entity.SiteInfo;
 import com.xzsd.pc.user.entity.UserInfo;
 import org.apache.ibatis.annotations.Param;
@@ -31,7 +32,7 @@ public interface OrderDao {
      * wumaoxing
      * 2020-08-23 21:33
      */
-    List<OrderInfo> findOrderById(String orderId);
+    List<RecordInfo> findOrderById(String orderId);
     /**
      * 订单状态修改
      * wumaoxing

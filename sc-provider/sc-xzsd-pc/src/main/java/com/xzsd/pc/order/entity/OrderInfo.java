@@ -40,6 +40,14 @@ public class OrderInfo {
      */
     private String orderId;
     /**
+     * 线路编号
+     */
+    private String lineId;
+    /**
+     * 线路名称
+     */
+    private String lineName;
+    /**
      * 收件人姓名
      */
     private String receiverName;
@@ -52,53 +60,33 @@ public class OrderInfo {
      */
     private String receiverUserId;
     /**
-     *派件员用户编号
+     * 派件员用户编号
      */
     private String deliverUserId;
     /**
-     * 出发地省份编号
+     * 出发地站点编号
      */
-    private String originProvinceId;
+    private String originSiteId;
     /**
-     * 出发地身份名称
+     * 出发地站点名称
      */
-    private String originProvinceName;
+    private String originSiteName;
     /**
-     * 出发地城市编号
+     * 目的地站点编号
      */
-    private String originCityId;
+    private String destinationSiteId;
     /**
-     * 出发地城市名称
+     * 目的地站点名称
      */
-    private String originCityName;
-    /**
-     * 出发地
-     */
-    private String origin;
-    /**
-     * 目的地省份编号
-     */
-    private String destinationProvinceId;
-    /**
-     * 目的地省份名称
-     */
-    private String destinationProvinceName;
-    /**
-     * 目的地城市编号
-     */
-    private String destinationCityId;
-    /**
-     * 目的地城市名称
-     */
-    private String destinationCityName;
-    /**
-     * 目的地
-     */
-    private String destination;
+    private String destinationSiteName;
     /**
      * 订单状态
      */
     private String orderState;
+    /**
+     * 重量
+     */
+    private String weight;
     /**
      * 邮费
      */
@@ -168,54 +156,6 @@ public class OrderInfo {
 
     public void setDeliverUserId(String deliverUserId) {
         this.deliverUserId = deliverUserId;
-    }
-
-    public String getOriginProvinceId() {
-        return originProvinceId;
-    }
-
-    public void setOriginProvinceId(String originProvinceId) {
-        this.originProvinceId = originProvinceId;
-    }
-
-    public String getOriginCityId() {
-        return originCityId;
-    }
-
-    public void setOriginCityId(String originCityId) {
-        this.originCityId = originCityId;
-    }
-
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
-    public String getDestinationProvinceId() {
-        return destinationProvinceId;
-    }
-
-    public void setDestinationProvinceId(String destinationProvinceId) {
-        this.destinationProvinceId = destinationProvinceId;
-    }
-
-    public String getDestinationCityId() {
-        return destinationCityId;
-    }
-
-    public void setDestinationCityId(String destinationCityId) {
-        this.destinationCityId = destinationCityId;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public String getOrderState() {
@@ -291,38 +231,6 @@ public class OrderInfo {
         this.version = version;
     }
 
-    public String getOriginProvinceName() {
-        return originProvinceName;
-    }
-
-    public void setOriginProvinceName(String originProvinceName) {
-        this.originProvinceName = originProvinceName;
-    }
-
-    public String getOriginCityName() {
-        return originCityName;
-    }
-
-    public void setOriginCityName(String originCityName) {
-        this.originCityName = originCityName;
-    }
-
-    public String getDestinationProvinceName() {
-        return destinationProvinceName;
-    }
-
-    public void setDestinationProvinceName(String destinationProvinceName) {
-        this.destinationProvinceName = destinationProvinceName;
-    }
-
-    public String getDestinationCityName() {
-        return destinationCityName;
-    }
-
-    public void setDestinationCityName(String destinationCityName) {
-        this.destinationCityName = destinationCityName;
-    }
-
     public String getPostage() {
         return postage;
     }
@@ -337,14 +245,6 @@ public class OrderInfo {
 
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public Date getPayTimeStart() {
@@ -409,5 +309,69 @@ public class OrderInfo {
 
     public void setOrderSum(String orderSum) {
         this.orderSum = orderSum;
+    }
+
+    public String getLineId() {
+        return lineId;
+    }
+
+    public void setLineId(String lineId) {
+        this.lineId = lineId;
+    }
+
+    public String getOriginSiteId() {
+        return originSiteId;
+    }
+
+    public void setOriginSiteId(String originSiteId) {
+        this.originSiteId = originSiteId;
+    }
+
+    public String getDestinationSiteId() {
+        return destinationSiteId;
+    }
+
+    public void setDestinationSiteId(String destinationSiteId) {
+        this.destinationSiteId = destinationSiteId;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getLineName() {
+        return lineName;
+    }
+
+    public void setLineName(String lineName) {
+        this.lineName = lineName;
+    }
+
+    public String getOriginSiteName() {
+        return originSiteName;
+    }
+
+    public void setOriginSiteName(String originSiteName) {
+        this.originSiteName = originSiteName;
+    }
+
+    public String getDestinationSiteName() {
+        return destinationSiteName;
+    }
+
+    public void setDestinationSiteName(String destinationSiteName) {
+        this.destinationSiteName = destinationSiteName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

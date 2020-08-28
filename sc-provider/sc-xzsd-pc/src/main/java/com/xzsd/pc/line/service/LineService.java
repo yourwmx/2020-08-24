@@ -111,4 +111,14 @@ public class LineService {
         }
         return appResponse;
     }
+
+    /**
+     * 查询线路上的站点
+     * wumaoxing
+     * 2020-08-28 17:23
+     */
+    public AppResponse querySiteByLine(String lineId){
+        return AppResponse.success("查询成功！", lineDao.querySiteByLine(lineId));
+    }
+
 }

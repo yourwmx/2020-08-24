@@ -144,4 +144,19 @@
                 #{item}
             </foreach>
     </update>
+    <!--查询线路上的站点-->
+    <select id="querySiteByLine" parameterType="java.lang.String" resultType="com.xzsd.pc.line.entity.LineInfo">
+        select
+            b.site_id firstSiteId,
+            b.site_name firstSiteName,
+            c.site_id secondSiteId,
+            c.site_name secondSiteName,
+            d.site_id thirdSiteId,
+            d.site_name thirdSiteName
+        from
+            t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
+        where
+            a.is_deleted = 0
+            and a.line_id = #{lineId}
+    </select>
 </mapper>
