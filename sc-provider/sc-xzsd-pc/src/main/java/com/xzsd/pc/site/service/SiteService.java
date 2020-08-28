@@ -49,7 +49,7 @@ public class SiteService {
      */
     public AppResponse listSites(SiteInfo siteInfo) {
         PageHelper.startPage(siteInfo.getPageNum(), siteInfo.getPageSize());
-        List<SiteInfo> siteInfoList = siteDao.listSites();
+        List<SiteInfo> siteInfoList = siteDao.listSites(siteInfo);
         // 包装Page对象
         PageInfo<SiteInfo> pageData = new PageInfo<SiteInfo>(siteInfoList);
         return AppResponse.success("查询成功！",pageData);

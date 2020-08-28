@@ -23,7 +23,7 @@ public interface SiteDao {
      * wumaoxing
      * 2020-08-25 9:05
      */
-    List<SiteInfo> listSites();
+    List<SiteInfo> listSites(SiteInfo siteInfo);
     /**
      * 查询站点详情
      * wumaoxing
