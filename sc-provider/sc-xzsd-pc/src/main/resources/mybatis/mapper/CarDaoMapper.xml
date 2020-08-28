@@ -140,7 +140,10 @@
             t_sys_car
         WHERE
             is_deleted = 0
-            and user_id != #{userId})
+        <if test="userId != null and userId != ''">
+            and user_id != #{userId}
+        </if>
+        )
         order by gmt_create desc
     </select>
 </mapper>
