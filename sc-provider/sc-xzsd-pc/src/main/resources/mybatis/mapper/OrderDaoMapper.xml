@@ -103,17 +103,19 @@
     <!--订单详情-->
     <select id="findOrderById" parameterType="java.lang.String" resultType="com.xzsd.pc.record.entity.RecordInfo">
         select
-            order_id orderId,
-            site_id siteId,
-            order_state orderState,
-            create_by createBy,
-            gmt_create gmtCreate
+            a.order_id orderId,
+            b.site_name siteName,
+            a.order_state orderState,
+            c.account,
+            a.gmt_create gmtCreate
         from
-            t_sys_record
+            t_sys_record a,t_sys_site b,t_sys_user c
         where
-            is_deleted = 0
-            and order_id = #{orderId}
-        order by gmt_create desc
+            a.is_deleted = 0
+            and a.site_id = b.site_id
+            and a.create_by = c.user_id
+            and a.order_id = #{orderId}
+        order by a.gmt_create desc
     </select>
     <!--订单状态修改-->
     <update id="updateOrderState" parameterType="com.xzsd.pc.order.entity.OrderInfo">

@@ -16,6 +16,14 @@ public class RecordInfo {
      */
     private String siteId;
     /**
+     * 站点名称
+     */
+    private String siteName;
+    /**
+     * 账号
+     */
+    private String account;
+    /**
      * 订单状态
      */
     private String orderState;
@@ -122,5 +130,21 @@ public class RecordInfo {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getSiteName() {
+        return siteName;
+    }
+
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }
