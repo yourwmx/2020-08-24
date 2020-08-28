@@ -84,12 +84,14 @@
             a.line_id lineId,
             b.line_name lineName,
             a.user_id userId,
+            c.account,
             a.version
         from
-            t_sys_car a,t_sys_line b
+            t_sys_car a,t_sys_line b,t_sys_user c
         where
             a.is_deleted = 0
             and a.line_id = b.line_id
+            and a.user_id = c.user_id
             and a.car_id = #{carId}
     </select>
     <!--修改车辆信息-->

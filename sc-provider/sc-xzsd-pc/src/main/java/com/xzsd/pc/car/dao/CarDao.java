@@ -54,5 +54,5 @@ public interface CarDao {
      * wumaoxing
      * 2020-08-28 11:15
      */
-    UserInfo listDrivers(String userId);
+    List<UserInfo> listDrivers(String userId);
 }
