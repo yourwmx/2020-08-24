@@ -1,5 +1,7 @@
 package com.xzsd.pc.record.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class RecordInfo {
@@ -100,6 +102,7 @@ public class RecordInfo {
         this.createBy = createBy;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     public Date getGmtCreate() {
         return gmtCreate;
     }
