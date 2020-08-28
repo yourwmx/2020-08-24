@@ -18,15 +18,15 @@
             version
             )
         values
-        <foreach collection="list" item="item" separator=",">
+        <foreach collection="listUpdateOrderId" item="item" separator=",">
             (
             #{item},
             #{siteId},
             #{orderState},
             0,
-            #{createBy},
+            #{updateUserId},
             now(),
-            #{lastModifiedBy},
+            #{updateUserId},
             now(),
             0
             )

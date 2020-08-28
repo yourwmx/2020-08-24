@@ -106,7 +106,8 @@
             order_id orderId,
             site_id siteId,
             order_state orderState,
-            gmt_create
+            create_by createBy,
+            gmt_create gmtCreate
         from
             t_sys_record
         where

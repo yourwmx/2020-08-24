@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.util.UUIDUtils;
+import com.xzsd.pc.delivery.dao.DeliveryDao;
 import com.xzsd.pc.user.dao.UserDao;
 import com.xzsd.pc.user.entity.UserInfo;
 import com.xzsd.pc.utils.PasswordUtils;
@@ -20,6 +21,9 @@ public class UserService {
 
     @Resource
     private UserDao userDao;
+
+    @Resource
+    private DeliveryDao deliveryDao;
 
     /**
      * 新增用户
@@ -42,8 +46,10 @@ public class UserService {
         if(userInfo.getPhoto() == null){
             userInfo.setPhoto("https://bookstore-1301648696.cos.ap-guangzhou.myqcloud.com/lover/lover_2020050213395179469.jpeg");
         }
+        // 往快递员表新增
+        int count = deliveryDao.addDelivery(userInfo.getUserId());
         // 新增用户
-        int count = userDao.addUser(userInfo);
+        count = userDao.addUser(userInfo);
         if(0 == count) {
             return AppResponse.bizError("新增失败，请重试！");
         }
