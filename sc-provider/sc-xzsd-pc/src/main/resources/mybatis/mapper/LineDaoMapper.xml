@@ -70,7 +70,10 @@
             b.site_id firstSiteId,
             b.site_name firstSiteName,
             c.site_id secondSiteId,
-            c.site_name secondSiteName
+            c.site_name secondSiteName,
+            expense,
+            income,
+            profit
         from
             t_sys_line a,t_sys_site b,t_sys_site c
         where

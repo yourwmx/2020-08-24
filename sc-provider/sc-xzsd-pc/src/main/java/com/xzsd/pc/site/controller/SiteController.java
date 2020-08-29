@@ -23,7 +23,6 @@ import javax.annotation.Resource;
 @RequestMapping("/site")
 public class SiteController {
 
-
     private static final Logger logger = LoggerFactory.getLogger(SiteController.class);
 
     @Resource

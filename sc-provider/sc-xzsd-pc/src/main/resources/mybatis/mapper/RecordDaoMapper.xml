@@ -32,4 +32,45 @@
             )
         </foreach>
     </insert>
+    <!--查询记录列表-->
+    <select id="listRecords" parameterType="com.xzsd.pc.record.entity.RecordInfo" resultType="com.xzsd.pc.record.entity.RecordInfo">
+        SELECT
+            x.account,
+            w.role,
+            x.receiveSum,
+            y.sendSum,
+            z.deliverSum
+        FROM
+            (select
+                b.user_id userId,b.account,count(*) receiveSum
+            from
+                t_sys_record a,t_sys_user b
+            WHERE
+                a.create_by =  b.user_id
+                and a.order_state = 1
+            GROUP BY a.create_by) x
+        LEFT JOIN
+            (select
+                b.user_id userId,b.account,count(*) sendSum
+            from
+                t_sys_record a,t_sys_user b
+            WHERE
+                a.create_by =  b.user_id
+                and a.order_state = 2
+            GROUP BY a.create_by) y
+        ON x.userId = y.userId
+        LEFT JOIN
+            (select
+                b.user_id userId,b.account,count(*) deliverSum
+            from
+                t_sys_record a,t_sys_user b
+            WHERE
+                a.create_by =  b.user_id
+                and a.order_state = 3
+            GROUP BY a.create_by) z
+        ON x.userId = z.userId
+        LEFT JOIN t_sys_user w
+            ON x.userId = w.user_id
+        WHERE w.role != 4
+    </select>
 </mapper>

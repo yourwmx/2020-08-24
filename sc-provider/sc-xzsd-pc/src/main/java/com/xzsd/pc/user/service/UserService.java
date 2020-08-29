@@ -47,9 +47,9 @@ public class UserService {
             userInfo.setPhoto("https://bookstore-1301648696.cos.ap-guangzhou.myqcloud.com/lover/lover_2020050213395179469.jpeg");
         }
         // 往快递员表新增
-        int count = deliveryDao.addDelivery(userInfo.getUserId());
+        //int count = deliveryDao.addDelivery(userInfo.getUserId());
         // 新增用户
-        count = userDao.addUser(userInfo);
+        int count = userDao.addUser(userInfo);
         if(0 == count) {
             return AppResponse.bizError("新增失败，请重试！");
         }

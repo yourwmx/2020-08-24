@@ -6,6 +6,14 @@ import java.util.Date;
 
 public class RecordInfo {
     /**
+     * 页码
+     */
+    private int pageSize;
+    /**
+     * 页数
+     */
+    private int pageNum;
+    /**
      * 记录编号
      */
     private String recordId;
@@ -25,6 +33,22 @@ public class RecordInfo {
      * 账号
      */
     private String account;
+    /**
+     * 角色
+     */
+    private String role;
+    /**
+     * 收件数量
+     */
+    private String receiveSum;
+    /**
+     * 发件数量
+     */
+    private String sendSum;
+    /**
+     * 派件数量
+     */
+    private String deliverSum;
     /**
      * 订单状态
      */
@@ -149,5 +173,53 @@ public class RecordInfo {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getReceiveSum() {
+        return receiveSum;
+    }
+
+    public void setReceiveSum(String receiveSum) {
+        this.receiveSum = receiveSum;
+    }
+
+    public String getSendSum() {
+        return sendSum;
+    }
+
+    public void setSendSum(String sendSum) {
+        this.sendSum = sendSum;
+    }
+
+    public String getDeliverSum() {
+        return deliverSum;
+    }
+
+    public void setDeliverSum(String deliverSum) {
+        this.deliverSum = deliverSum;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 }

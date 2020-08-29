@@ -1,7 +1,6 @@
 package com.xzsd.pc.site.entity;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * 站点类
