@@ -32,7 +32,13 @@ public interface OrderDao {
      * wumaoxing
      * 2020-08-23 21:33
      */
-    List<RecordInfo> findOrderById(String orderId);
+    OrderInfo findOrderById(String orderId);
+    /**
+     * 订单记录
+     * wumaoxing
+     * 2020-08-23 21:33
+     */
+    List<RecordInfo> findOrderByIds(String orderId);
     /**
      * 订单状态修改
      * wumaoxing

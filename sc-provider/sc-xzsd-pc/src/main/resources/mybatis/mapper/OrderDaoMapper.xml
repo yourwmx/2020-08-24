@@ -17,16 +17,27 @@
             order_state orderState,
             bag_id bagId,
             e.account,
+            e.name,
             e.phone,
+            concat(g.v,h.v,f.site_name) origin,
+            concat(j.v,k.v,i.site_name) destination,
             a.gmt_create gmtCreate
         from
-            t_sys_order a,t_sys_line b,t_sys_site c,t_sys_site d,t_sys_user e
+            t_sys_order a,t_sys_line b,t_sys_site c,t_sys_site d,t_sys_user e,
+            t_sys_site f,t_sys_dictionary g,t_sys_dictionary h,
+            t_sys_site i,t_sys_dictionary j,t_sys_dictionary k
         where
             a.is_deleted = 0
             and a.line_id = b.line_id
             and a.origin_site_id = c.site_id
             and a.destination_site_id = d.site_id
             and a.user_id = e.user_id
+            and a.origin_site_id = f.site_id
+            and f.province_id = g.dictionary_id
+            and f.city_id = h.dictionary_id
+            and a.destination_site_id = i.site_id
+            and i.province_id = j.dictionary_id
+            and i.city_id = k.dictionary_id
         <if test="role == 4">
             and a.user_id = #{userId}
         </if>
@@ -101,7 +112,29 @@
             )
     </insert>
     <!--订单详情-->
-    <select id="findOrderById" parameterType="java.lang.String" resultType="com.xzsd.pc.record.entity.RecordInfo">
+    <select id="findOrderByIds" parameterType="java.lang.String" resultType="com.xzsd.pc.order.entity.OrderInfo">
+        select
+            a.order_id orderId,
+            concat(c.v,d.v,b.site_name) origin,
+            concat(f.v,g.v,e.site_name) destination,
+            a.receiver_name receiverName,
+            a.receiver_phone receiverPhone
+        from
+            t_sys_order a,
+            t_sys_site b,t_sys_dictionary c,t_sys_dictionary d,
+            t_sys_site e,t_sys_dictionary f,t_sys_dictionary g
+        where
+            a.is_deleted = 0
+            and a.order_id = #{orderId}
+            and a.origin_site_id = b.site_id
+            and b.province_id = c.dictionary_id
+            and b.city_id = d.dictionary_id
+            and a.destination_site_id = e.site_id
+            and e.province_id = f.dictionary_id
+            and e.city_id = g.dictionary_id
+    </select>
+    <!--订单记录-->
+    <select id="findOrderByIds" parameterType="java.lang.String" resultType="com.xzsd.pc.record.entity.RecordInfo">
         select
             a.order_id orderId,
             b.site_name siteName,

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -65,8 +66,15 @@ public class OrderService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addOrder(OrderInfo orderInfo){
         orderInfo.setOrderId(RandomUtil.radmonkey(6));
+        // 增加订单记录
+        List<String> listaddOrderId = new ArrayList<>();
+        listaddOrderId.add(orderInfo.getOrderId());
+        int count = recordDao.addRecord(listaddOrderId, orderInfo.getCreateBy(), "0", orderInfo.getOriginSiteId());
+        if (count == 0) {
+            return AppResponse.bizError("订单记录增加失败，请重试！");
+        }
         // 在线下单
-        int count = orderDao.addOrder(orderInfo);
+        count = orderDao.addOrder(orderInfo);
         if(0 == count) {
             return AppResponse.bizError("下单失败，请重试！");
         }
@@ -79,7 +87,11 @@ public class OrderService {
      * 2020-08-23 21:30
      */
     public AppResponse findOrderById(OrderInfo orderInfo){
-        return AppResponse.success("查询成功！", orderDao.findOrderById(orderInfo.getOrderId()));
+        //订单详情
+        orderInfo = orderDao.findOrderById(orderInfo.getOrderId());
+        //订单记录
+        orderInfo.setList(orderDao.findOrderByIds(orderInfo.getOrderId()));
+        return AppResponse.success("查询成功！", orderInfo);
     }
 
     /**

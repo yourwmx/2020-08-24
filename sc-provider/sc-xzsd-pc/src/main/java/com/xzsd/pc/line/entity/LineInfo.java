@@ -49,6 +49,10 @@ public class LineInfo {
      */
     private String thirdSiteName;
     /**
+     * 单价
+     */
+    private String linePrice;
+    /**
      * 支出
      */
     private String expense;
@@ -247,5 +251,13 @@ public class LineInfo {
 
     public void setThirdSiteName(String thirdSiteName) {
         this.thirdSiteName = thirdSiteName;
+    }
+
+    public String getLinePrice() {
+        return linePrice;
+    }
+
+    public void setLinePrice(String linePrice) {
+        this.linePrice = linePrice;
     }
 }

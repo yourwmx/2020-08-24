@@ -1,9 +1,11 @@
 package com.xzsd.pc.order.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.xzsd.pc.record.entity.RecordInfo;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 订单类
@@ -71,6 +73,18 @@ public class OrderInfo {
      * 出发地站点名称
      */
     private String originSiteName;
+    /**
+     * 出发地
+     */
+    private String origin;
+    /**
+     * 目的地
+     */
+    private String destination;
+    /**
+     * 订单记录
+     */
+    private List<RecordInfo> list;
     /**
      * 目的地站点编号
      */
@@ -373,5 +387,29 @@ public class OrderInfo {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public List<RecordInfo> getList() {
+        return list;
+    }
+
+    public void setList(List<RecordInfo> list) {
+        this.list = list;
     }
 }

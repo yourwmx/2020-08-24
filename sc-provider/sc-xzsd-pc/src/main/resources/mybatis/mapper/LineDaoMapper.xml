@@ -34,6 +34,7 @@
             first_site_id,
             second_site_id,
             third_site_id,
+            line_price,
             expense,
             income,
             profit,
@@ -51,6 +52,7 @@
             #{firstSiteId},
             #{secondSiteId},
             #{thirdSiteId},
+            #{linePrice},
             0,
             0,
             0,
@@ -73,6 +75,7 @@
             c.site_name secondSiteName,
             d.site_id thirdSiteId,
             d.site_name thirdSiteName,
+            a.line_price linePrice,
             expense,
             income,
             profit
@@ -102,6 +105,7 @@
             c.site_name secondSiteName,
             d.site_id thirdSiteId,
             d.site_name thirdSiteName,
+            a.line_price linePrice,
             expense,
             income,
             profit,
@@ -125,6 +129,7 @@
             first_site_id       = #{firstSiteId},
             second_site_id      = #{secondSiteId},
             third_site_id       = #{thirdSiteId},
+            line_price          = #{linePrice},
             expense             = #{expense},
             income              = #{income},
             profit              = #{profit},
@@ -158,7 +163,8 @@
             c.site_id secondSiteId,
             c.site_name secondSiteName,
             d.site_id thirdSiteId,
-            d.site_name thirdSiteName
+            d.site_name thirdSiteName,
+            a.line_price linePrice
         from
             t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
         where
