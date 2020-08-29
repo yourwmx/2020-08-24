@@ -112,7 +112,7 @@
             )
     </insert>
     <!--订单详情-->
-    <select id="findOrderByIds" parameterType="java.lang.String" resultType="com.xzsd.pc.order.entity.OrderInfo">
+    <select id="findOrderById" parameterType="java.lang.String" resultType="com.xzsd.pc.order.entity.OrderInfo">
         select
             a.order_id orderId,
             concat(c.v,d.v,b.site_name) origin,
