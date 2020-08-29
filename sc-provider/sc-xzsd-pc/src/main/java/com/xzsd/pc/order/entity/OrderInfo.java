@@ -34,6 +34,10 @@ public class OrderInfo {
      */
     private String account;
     /**
+     * 姓名
+     */
+    private String name;
+    /**
      * 手机
      */
     private String phone;
@@ -403,6 +407,14 @@ public class OrderInfo {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<RecordInfo> getList() {
