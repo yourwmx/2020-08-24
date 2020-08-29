@@ -14,11 +14,11 @@
             phone,
             email,
             idCard
-            from
+        from
             t_sys_user
         where
             is_deleted = 0
-            and role == 4
+            and role = 4
         <if test="account != null and account != ''">
             and account like concat('%',#{account},'%')
         </if>
