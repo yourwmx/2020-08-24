@@ -46,8 +46,11 @@
             from
                 t_sys_record a,t_sys_user b
             WHERE
-                a.create_by =  b.user_id
+                a.create_by = b.user_id
                 and a.order_state = 1
+            <if test="role == 1">
+                and a.site_id = #{siteId}
+            </if>
             GROUP BY a.create_by) x
         LEFT JOIN
             (select
@@ -72,8 +75,5 @@
         LEFT JOIN t_sys_user w
             ON x.userId = w.user_id
         WHERE w.role != 4
-        <if test="role == 1">
-            and x.site_id = #{siteId}
-        </if>
     </select>
 </mapper>

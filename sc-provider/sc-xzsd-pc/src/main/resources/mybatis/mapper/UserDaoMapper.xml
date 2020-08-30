@@ -134,6 +134,7 @@
             idCard          = #{idCard},
             site_id         = #{siteId},
             role            = #{role},
+            photo           = #{photo},
             last_modified_by    = #{lastModifiedBy},
             gmt_modified    = now(),
             version         = version + 1
