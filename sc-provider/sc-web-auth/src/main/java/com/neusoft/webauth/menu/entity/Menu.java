@@ -11,10 +11,6 @@ import java.util.Date;
 
 public class Menu {
     /**
-     * 角色
-     */
-    private String role;
-    /**
      * 菜单编号
      */
     private String menuId;
@@ -157,13 +153,5 @@ public class Menu {
 
     public void setVersion(String version) {
         this.version = version;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }

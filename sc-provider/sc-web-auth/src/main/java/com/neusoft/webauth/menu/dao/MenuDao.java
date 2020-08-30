@@ -1,6 +1,7 @@
 package com.neusoft.webauth.menu.dao;
 
 import com.neusoft.webauth.menu.entity.Menu;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface MenuDao {
      * 查询全部菜单
      * @return 菜单集合
      */
-    List<Menu> listMenus(String role);
+    List<Menu> listMenus(@Param("role") String role);
 }
