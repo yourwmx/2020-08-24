@@ -83,7 +83,7 @@
             a.province_id provinceId,
             a.city_id cityId,
             b.v provinceName,
-            c.v cityName
+            c.v cityName,
             a.version
         from
             t_sys_site a,t_sys_dictionary b,t_sys_dictionary c
