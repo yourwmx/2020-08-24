@@ -30,6 +30,10 @@ public class OrderInfo {
      */
     private String role;
     /**
+     * 站点编号
+     */
+    private String siteId;
+    /**
      * 账号
      */
     private String account;
@@ -423,5 +427,13 @@ public class OrderInfo {
 
     public void setList(List<RecordInfo> list) {
         this.list = list;
+    }
+
+    public String getSiteId() {
+        return siteId;
+    }
+
+    public void setSiteId(String siteId) {
+        this.siteId = siteId;
     }
 }

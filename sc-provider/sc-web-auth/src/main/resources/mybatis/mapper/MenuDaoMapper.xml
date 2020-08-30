@@ -16,6 +16,9 @@
         where
             is_deleted = 0
             and last_level_id = 0
+        <if test="role == 1">
+            and menu_note = 1
+        </if>
         order by gmt_create
     </select>
 </mapper>

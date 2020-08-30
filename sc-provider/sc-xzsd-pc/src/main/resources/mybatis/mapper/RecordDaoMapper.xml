@@ -72,8 +72,8 @@
         LEFT JOIN t_sys_user w
             ON x.userId = w.user_id
         WHERE w.role != 4
-        <if test="role != null and role != ''">
-            and w.role = #{role}
+        <if test="role == 1">
+            and x.site_id = #{siteId}
         </if>
     </select>
 </mapper>

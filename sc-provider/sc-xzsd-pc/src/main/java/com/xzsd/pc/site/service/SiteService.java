@@ -2,9 +2,11 @@ package com.xzsd.pc.site.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.RandomUtil;
 import com.xzsd.pc.site.dao.SiteDao;
 import com.xzsd.pc.site.entity.SiteInfo;
+import com.xzsd.pc.user.dao.UserDao;
 import com.xzsd.pc.utils.AppResponse;
 import com.xzsd.pc.utils.StringUtil;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class SiteService {
 
     @Resource
     private SiteDao siteDao;
+
+    @Resource
+    private UserDao userDao;
 
     /**
      * 新增站点
@@ -49,6 +54,11 @@ public class SiteService {
      */
     public AppResponse listSites(SiteInfo siteInfo) {
         PageHelper.startPage(siteInfo.getPageNum(), siteInfo.getPageSize());
+        // 若当前是登录人是站长，则只查看本站点信息
+        if("1".compareTo(siteInfo.getRole()) == 0){
+            String siteId = userDao.findUserById(SecurityUtils.getCurrentUserId()).getSiteId();
+            siteInfo.setSiteId(siteId);
+        }
         List<SiteInfo> siteInfoList = siteDao.listSites(siteInfo);
         // 包装Page对象
         PageInfo<SiteInfo> pageData = new PageInfo<SiteInfo>(siteInfoList);

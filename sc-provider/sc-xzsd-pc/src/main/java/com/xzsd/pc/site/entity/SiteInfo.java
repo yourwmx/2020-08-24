@@ -17,6 +17,10 @@ public class SiteInfo {
      */
     private int pageNum;
     /**
+     * 角色
+     */
+    private String role;
+    /**
      * 站点编号
      */
     private String siteId;
@@ -187,5 +191,13 @@ public class SiteInfo {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

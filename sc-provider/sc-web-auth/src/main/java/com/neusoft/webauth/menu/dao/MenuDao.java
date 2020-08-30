@@ -11,10 +11,9 @@ import java.util.List;
  * @Date 2018/11/28
  */
 public interface MenuDao {
-
     /**
      * 查询全部菜单
      * @return 菜单集合
      */
-    List<Menu> listMenus();
+    List<Menu> listMenus(String role);
 }

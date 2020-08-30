@@ -26,10 +26,10 @@ public class MenuService {
      * 作成者：朱庆锋
      * 作成时间：2018/11/28
      */
-    public Map<String,Object> listMenus(String rootId) {
+    public Map<String,Object> listMenus(String rootId, String role) {
         Map<String, Object> map = new HashMap<String, Object>();
         // 查询全部菜单
-        List<Menu> allMenus = menuDao.listMenus();
+        List<Menu> allMenus = menuDao.listMenus(role);
         Tree rootTree = new Tree();
         // 格式化菜单成树结构
         initTree(rootTree, allMenus, rootId);

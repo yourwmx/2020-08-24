@@ -37,9 +37,9 @@ public class MenuController {
      * 作成时间：2018/11/28
      */
     @RequestMapping(value = "listMenus")
-    public AppResponse listMenus() {
+    public AppResponse listMenus(String role) {
         try {
-            Map<String,Object> map = menuService.listMenus(GlobalConstant.MENU_ROOT);
+            Map<String,Object> map = menuService.listMenus(GlobalConstant.MENU_ROOT, role);
             return AppResponse.success("查询成功", map);
         } catch (Exception e) {
             logger.error("菜单获取异常", e);
