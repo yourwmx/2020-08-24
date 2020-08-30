@@ -174,4 +174,14 @@
         where
             is_deleted = 0
     </select>
+    <!--查询是否有订单-->
+    <select id="countOrder" parameterType="java.lang.String" resultType="int">
+        select
+            count(*)
+        from
+            t_sys_order
+        where
+            is_deleted = 0
+            and order_id = #{orderId}
+    </select>
 </mapper>

@@ -51,4 +51,10 @@ public interface OrderDao {
      * 2020-08-26 19:54
      */
     String queryOrderSum();
+    /**
+     * 查询是否有订单
+     * wumaoxing
+     * 2020-08-30 14:29
+     */
+    int countOrder(String orderId);
 }

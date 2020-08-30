@@ -88,6 +88,11 @@ public class OrderService {
      * 2020-08-23 21:30
      */
     public AppResponse findOrderById(OrderInfo orderInfo){
+        //查询是否有订单
+        int count = orderDao.countOrder(orderInfo.getOrderId());
+        if(count == 0){
+            return AppResponse.bizError("查询无此订单，请重试！");
+        }
         //订单详情
         orderInfo = orderDao.findOrderById(orderInfo.getOrderId());
         //订单记录
