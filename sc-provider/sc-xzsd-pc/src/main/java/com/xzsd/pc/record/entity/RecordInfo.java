@@ -1,6 +1,7 @@
 package com.xzsd.pc.record.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -53,6 +54,13 @@ public class RecordInfo {
      * 订单状态
      */
     private String orderState;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date timeStart;
+    /**
+     * 付款时间止
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date timeEnd;
     /**
      * 删除标记 0未删 1删
      */
@@ -221,5 +229,21 @@ public class RecordInfo {
 
     public void setPageNum(int pageNum) {
         this.pageNum = pageNum;
+    }
+
+    public Date getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(Date timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public Date getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(Date timeEnd) {
+        this.timeEnd = timeEnd;
     }
 }

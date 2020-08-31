@@ -1,5 +1,7 @@
 package com.xzsd.pc.line.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -72,6 +74,28 @@ public class LineInfo {
      * 线路总数
      */
     private String lineSum;
+    /**
+     * 站点总数
+     */
+    private String siteSum;
+    /**
+     * 车辆总数
+     */
+    private String carSum;
+    /**
+     * 订单总数
+     */
+    private String orderSum;
+    /**
+     * 付款时间起
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date timeStart;
+    /**
+     * 付款时间止
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date timeEnd;
     /**
      * 删除标记 0未删 1删
      */
@@ -271,5 +295,45 @@ public class LineInfo {
 
     public void setLinePrices(String linePrices) {
         this.linePrices = linePrices;
+    }
+
+    public Date getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(Date timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public Date getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(Date timeEnd) {
+        this.timeEnd = timeEnd;
+    }
+
+    public String getSiteSum() {
+        return siteSum;
+    }
+
+    public void setSiteSum(String siteSum) {
+        this.siteSum = siteSum;
+    }
+
+    public String getCarSum() {
+        return carSum;
+    }
+
+    public void setCarSum(String carSum) {
+        this.carSum = carSum;
+    }
+
+    public String getOrderSum() {
+        return orderSum;
+    }
+
+    public void setOrderSum(String orderSum) {
+        this.orderSum = orderSum;
     }
 }

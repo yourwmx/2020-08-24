@@ -42,19 +42,19 @@
             z.deliverSum
         FROM
             (select
-                b.user_id userId,b.account,count(*) receiveSum
+                a.gmt_create,a.site_id siteId,b.user_id userId,b.account,count(*) receiveSum
             from
                 t_sys_record a,t_sys_user b
             WHERE
                 a.create_by = b.user_id
                 and a.order_state = 1
-            <if test="role == 1">
+            <if test="(role == 1) || (siteId != null and siteId != '')">
                 and a.site_id = #{siteId}
             </if>
             GROUP BY a.create_by) x
         LEFT JOIN
             (select
-                b.user_id userId,b.account,count(*) sendSum
+                a.gmt_create,b.user_id userId,b.account,count(*) sendSum
             from
                 t_sys_record a,t_sys_user b
             WHERE
@@ -64,7 +64,7 @@
         ON x.userId = y.userId
         LEFT JOIN
             (select
-                b.user_id userId,b.account,count(*) deliverSum
+                a.gmt_create,b.user_id userId,b.account,count(*) deliverSum
             from
                 t_sys_record a,t_sys_user b
             WHERE
@@ -74,6 +74,15 @@
         ON x.userId = z.userId
         LEFT JOIN t_sys_user w
             ON x.userId = w.user_id
-        WHERE w.role != 4
+        WHERE
+            w.role != 4
+        <if test="timeStart != null and timeEnd != null">
+            and x.gmt_create
+            between #{timeStart} and #{timeEnd}
+            and y.gmt_create
+            between #{timeStart} and #{timeEnd}
+            and z.gmt_create
+            between #{timeStart} and #{timeEnd}
+        </if>
     </select>
 </mapper>

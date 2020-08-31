@@ -2,8 +2,11 @@ package com.xzsd.pc.line.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xzsd.pc.car.dao.CarDao;
 import com.xzsd.pc.line.dao.LineDao;
 import com.xzsd.pc.line.entity.LineInfo;
+import com.xzsd.pc.order.dao.OrderDao;
+import com.xzsd.pc.site.dao.SiteDao;
 import com.xzsd.pc.utils.AppResponse;
 import com.xzsd.pc.utils.StringUtil;
 import org.springframework.stereotype.Service;
@@ -20,13 +23,27 @@ public class LineService {
     @Resource
     private LineDao lineDao;
 
+    @Resource
+    private SiteDao siteDao;
+
+    @Resource
+    private CarDao carDao;
+
+    @Resource
+    private OrderDao orderDao;
+
     /**
      * 查询线路总数
      * wumaoxing
      * 2020-08-26 19:52
      */
     public AppResponse queryLineSum(){
-        return AppResponse.success("查询成功！", lineDao.queryLineSum());
+        LineInfo lineInfo = new LineInfo();
+        lineInfo.setLineSum(lineDao.queryLineSum());
+        lineInfo.setSiteSum(siteDao.querySiteSum());
+        lineInfo.setCarSum(carDao.queryCarSum());
+        lineInfo.setOrderSum(orderDao.queryOrderSum());
+        return AppResponse.success("查询成功！", lineInfo);
     }
 
     /**
@@ -58,6 +75,10 @@ public class LineService {
     public AppResponse listLines(LineInfo lineInfo) {
         PageHelper.startPage(lineInfo.getPageNum(), lineInfo.getPageSize());
         List<LineInfo> lineInfoList = lineDao.listLines(lineInfo);
+        //计算利润
+        for(int i = 0; i < lineInfoList.size(); i++){
+            lineInfoList.get(i).setProfit((Integer.parseInt(lineInfoList.get(i).getIncome()) - Integer.parseInt(lineInfoList.get(i).getExpense()))+"");
+        }
         // 包装Page对象
         PageInfo<LineInfo> pageData = new PageInfo<LineInfo>(lineInfoList);
         return AppResponse.success("查询成功！",pageData);
@@ -69,7 +90,10 @@ public class LineService {
      * 2020-08-27 15:23
      */
     public LineInfo findLineById(String lineId) {
-        return lineDao.findLineById(lineId);
+        LineInfo lineInfo = lineDao.findLineById(lineId);
+        //计算利润
+        lineInfo.setProfit((Integer.parseInt(lineInfo.getIncome()) - Integer.parseInt(lineInfo.getExpense())+""));
+        return lineInfo;
     }
 
     /**
