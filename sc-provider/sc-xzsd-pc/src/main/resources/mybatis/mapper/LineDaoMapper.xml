@@ -82,14 +82,31 @@
             e.sum expense,
             f.sum income
         from
-            t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d
+            t_sys_line a
+        left join
+            t_sys_site b
+        on
+            a.first_site_id = b.site_id
+        left join
+            t_sys_site c
+        on
+            a.second_site_id = c.site_id
+        left join
+            t_sys_site d
+        on
+            a.third_site_id = d.site_id
         left join
             (select
                 gmt_create,line_id,sum(expense) sum
             from
                 t_sys_car_record
             group by line_id) e
-        on a.line_id = e.line_id
+        on
+            a.line_id = e.line_id
+        <if test="timeStart != null and timeEnd != null">
+            and e.gmt_create
+            between #{timeStart} and #{timeEnd}
+        </if>
         left join
             (select
                 gmt_create,line_id,sum(postage) sum
@@ -97,24 +114,19 @@
                 t_sys_order
             group by line_id) f
         on a.line_id = f.line_id
+        <if test="timeStart != null and timeEnd != null">
+            and f.gmt_create
+            between #{timeStart} and #{timeEnd}
+        </if>
         where
             a.is_deleted = 0
-            and a.first_site_id = b.site_id
-            and a.second_site_id = c.site_id
-            and a.third_site_id = d.site_id
         <if test="lineId != null and lineId !=''">
             and line_id = #{lineId}
         </if>
         <if test="lineName != null and lineName !=''">
             and line_name like concat('%',#{lineName},'%')
         </if>
-        <if test="timeStart != null and timeEnd != null">
-            and e.gmt_create
-            between #{timeStart} and #{timeEnd}
-            and f.gmt_create
-            between #{timeStart} and #{timeEnd}
-        </if>
-            order by a.gmt_create desc
+        order by a.gmt_create desc
     </select>
     <!--查询线路详情-->
     <select id="findLineById" parameterType="java.lang.String" resultType="com.xzsd.pc.line.entity.LineInfo">
@@ -133,25 +145,36 @@
             f.sum income,
             a.version
         from
-            t_sys_line a,t_sys_site b,t_sys_site c,t_sys_site d,
+            t_sys_line a
+        left join
+            t_sys_site b
+        on
+            a.first_site_id = b.site_id
+        left join
+            t_sys_site c
+        on
+            a.second_site_id = c.site_id
+        left join
+            t_sys_site d
+        on
+            a.third_site_id = d.site_id
+        left join
             (select
-                line_id,sum(expense) sum
+                gmt_create,line_id,sum(expense) sum
             from
                 t_sys_car_record
-            group by line_id) e,
+            group by line_id) e
+        on a.line_id = e.line_id
+        left join
             (select
-                line_id,sum(postage) sum
+                gmt_create,line_id,sum(postage) sum
             from
                 t_sys_order
             group by line_id) f
+        on a.line_id = f.line_id
         where
             a.is_deleted = 0
-            and a.first_site_id = b.site_id
-            and a.second_site_id = c.site_id
-            and a.third_site_id = d.site_id
             and a.line_id = #{lineId}
-            and a.line_id = e.line_id
-            and a.line_id = f.line_id
     </select>
     <!--修改线路信息-->
     <update id="updateLineById" parameterType="com.xzsd.pc.line.entity.LineInfo">
