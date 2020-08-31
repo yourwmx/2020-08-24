@@ -36,6 +36,22 @@ public class CarInfo {
      */
     private String account;
     /**
+     * 趟数
+     */
+    private String trainNumber;
+    /**
+     * 线路单价
+     */
+    private String linePrices;
+    /**
+     * 发车标记 0未发 1发
+     */
+    private String isTrain;
+    /**
+     * 删除标记 0未删 1删
+     */
+    private int isDeleted;
+    /**
      * 创建人
      */
     private String createBy;
@@ -158,5 +174,37 @@ public class CarInfo {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public String getTrainNumber() {
+        return trainNumber;
+    }
+
+    public void setTrainNumber(String trainNumber) {
+        this.trainNumber = trainNumber;
+    }
+
+    public int getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public String getIsTrain() {
+        return isTrain;
+    }
+
+    public void setIsTrain(String isTrain) {
+        this.isTrain = isTrain;
+    }
+
+    public String getLinePrices() {
+        return linePrices;
+    }
+
+    public void setLinePrices(String linePrices) {
+        this.linePrices = linePrices;
     }
 }

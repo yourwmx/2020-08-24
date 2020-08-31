@@ -33,6 +33,7 @@
             car_name,
             line_id,
             user_id,
+            train_number,
             is_deleted,
             create_by,
             gmt_create,
@@ -46,6 +47,7 @@
             #{carName},
             #{lineId},
             #{userId},
+            0,
             0,
             #{createBy},
             now(),
@@ -61,7 +63,8 @@
             a.car_name carName,
             a.line_id lineId,
             b.line_name lineName,
-            c.account
+            c.account,
+            a.train_number trainNumber
         from
             t_sys_car a,t_sys_line b,t_sys_user c
         where
@@ -83,8 +86,10 @@
             a.car_name carName,
             a.line_id lineId,
             b.line_name lineName,
+            b.line_prices linePrices,
             a.user_id userId,
             c.account,
+            a.train_number trainNumber,
             a.version
         from
             t_sys_car a,t_sys_line b,t_sys_user c
@@ -103,6 +108,7 @@
             car_name       = #{carName},
             line_id       = #{lineId},
             user_id      = #{userId},
+            train_number    = #{trainNumber},
             last_modified_by    = #{lastModifiedBy},
             gmt_modified    = now(),
             version         = version + 1

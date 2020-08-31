@@ -17,7 +17,7 @@ public class StaticAuthorizeConfigProvider implements AuthorizeConfigProvider {
     public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
         config
                 .antMatchers("/**/favicon.ico", "/js/**", "/css/**", "/img/**", "/html/**", "/error/**","/**/user/addUser","/**/uploadImage","/**/order/findOrderById",
-                        "/**/line/queryLineSum","/**/site/querySiteSum","/**/car/queryCarSum","/**/order/queryOrderSum").permitAll()
+                        "/**/line/queryLineSum","/**/site/querySiteSum","/**/car/queryCarSum","/**/order/queryOrderSum","/**/line/listLines","/**/line/querySiteByLine").permitAll()
                 .antMatchers("/druid/**", "/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs").permitAll();
         return false;
     }

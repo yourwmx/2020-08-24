@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.carRecord.dao.CarRecordDao">
+    <!--添加发车记录-->
+    <insert id="addCarRecord" parameterType="com.xzsd.pc.car.entity.CarInfo">
+        insert into t_sys_car_record
+            (
+            car_id,
+            line_id,
+            user_id,
+            expense,
+            is_deleted,
+            create_by,
+            gmt_create,
+            last_modified_by,
+            gmt_modified,
+            version
+            )
+        values
+            (
+            #{carId},
+            #{lineId},
+            #{userId},
+            #{linePrices},
+            0,
+            #{createBy},
+            now(),
+            #{lastModifiedBy},
+            now(),
+            0
+            )
+    </insert>
+</mapper>

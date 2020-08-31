@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xzsd.pc.car.dao.CarDao;
 import com.xzsd.pc.car.entity.CarInfo;
+import com.xzsd.pc.carRecord.dao.CarRecordDao;
 import com.xzsd.pc.utils.AppResponse;
 import com.xzsd.pc.utils.StringUtil;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class CarService {
 
     @Resource
     private CarDao carDao;
+
+    @Resource
+    private CarRecordDao carRecordDao;
 
     /**
      * 查询车辆总数
@@ -85,8 +89,14 @@ public class CarService {
         if(0 != countCar) {
             return AppResponse.bizError("车辆名称已存在，请重新输入！");
         }
+        int count;
+        // 是否发车
+        if("1".compareTo(carInfo.getIsTrain()) == 0){
+            // 添加发车记录
+            count = carRecordDao.addCarRecord(carInfo);
+        }
         // 修改车辆信息
-        int count = carDao.updateCarById(carInfo);
+        count = carDao.updateCarById(carInfo);
         if (0 == count) {
             appResponse = AppResponse.versionError("数据有变化，请刷新！");
             return appResponse;
