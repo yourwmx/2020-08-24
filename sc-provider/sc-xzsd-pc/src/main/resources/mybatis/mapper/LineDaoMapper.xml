@@ -80,9 +80,7 @@
             a.line_price linePrice,
             a.line_prices linePrices,
             e.sum expense,
-            e.gmt_create,
-            f.sum income,
-            f.gmt_create
+            f.sum income
         from
             t_sys_line a
         left join

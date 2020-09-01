@@ -77,7 +77,9 @@ public class LineService {
         List<LineInfo> lineInfoList = lineDao.listLines(lineInfo);
         //计算利润
         for(int i = 0; i < lineInfoList.size(); i++){
-            lineInfoList.get(i).setProfit((Integer.parseInt(lineInfoList.get(i).getIncome()) - Integer.parseInt(lineInfoList.get(i).getExpense()))+"");
+            if(lineInfoList.get(i).getIncome() != null && lineInfoList.get(i).getExpense() != null){
+                lineInfoList.get(i).setProfit((Integer.parseInt(lineInfoList.get(i).getIncome()) - Integer.parseInt(lineInfoList.get(i).getExpense()))+"");
+            }
         }
         // 包装Page对象
         PageInfo<LineInfo> pageData = new PageInfo<LineInfo>(lineInfoList);
@@ -92,7 +94,9 @@ public class LineService {
     public LineInfo findLineById(String lineId) {
         LineInfo lineInfo = lineDao.findLineById(lineId);
         //计算利润
-        lineInfo.setProfit((Integer.parseInt(lineInfo.getIncome()) - Integer.parseInt(lineInfo.getExpense())+""));
+        if(lineInfo.getIncome() != null && lineInfo.getExpense() != null){
+            lineInfo.setProfit((Integer.parseInt(lineInfo.getIncome()) - Integer.parseInt(lineInfo.getExpense())+""));
+        }
         return lineInfo;
     }
 
