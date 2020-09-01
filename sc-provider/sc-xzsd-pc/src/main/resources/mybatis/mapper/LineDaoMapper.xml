@@ -100,25 +100,25 @@
                 gmt_create,line_id,sum(expense) sum
             from
                 t_sys_car_record
+            <if test="timeStart != null and timeEnd != null">
+                gmt_create
+                between #{timeStart} and #{timeEnd}
+            </if>
             group by line_id) e
         on
             a.line_id = e.line_id
-        <if test="timeStart != null and timeEnd != null">
-            and e.gmt_create
-            between #{timeStart} and #{timeEnd}
-        </if>
         left join
             (select
                 gmt_create,line_id,sum(postage) sum
             from
                 t_sys_order
+            <if test="timeStart != null and timeEnd != null">
+                gmt_create
+                between #{timeStart} and #{timeEnd}
+            </if>
             group by line_id) f
         on
             a.line_id = f.line_id
-        <if test="timeStart != null and timeEnd != null">
-            and f.gmt_create
-            between #{timeStart} and #{timeEnd}
-        </if>
         where
             a.is_deleted = 0
         <if test="lineId != null and lineId !=''">
