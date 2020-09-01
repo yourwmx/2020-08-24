@@ -60,6 +60,7 @@
             user_id userId,
             account,
             photo,
+            name,
             role
         from
             t_sys_user

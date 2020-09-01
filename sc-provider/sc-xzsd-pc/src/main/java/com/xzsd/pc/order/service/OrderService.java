@@ -44,6 +44,11 @@ public class OrderService {
      */
     public AppResponse listOrders(OrderInfo orderInfo) {
         PageHelper.startPage(orderInfo.getPageNum(), orderInfo.getPageSize());
+        // 若当前是登录人是站长，则只查看本订单信息
+        if(orderInfo.getRole() != null && "1".compareTo(orderInfo.getRole()) == 0){
+            String siteId = userDao.findUserById(SecurityUtils.getCurrentUserId()).getSiteId();
+            orderInfo.setSiteId(siteId);
+        }
         List<OrderInfo> orderInfoList = orderDao.listOrders(orderInfo);
         // 包装Page对象
         PageInfo<OrderInfo> pageData = new PageInfo<OrderInfo>(orderInfoList);

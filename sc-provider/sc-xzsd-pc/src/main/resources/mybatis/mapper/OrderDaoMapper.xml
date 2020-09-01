@@ -41,6 +41,9 @@
         <if test="role == 4">
             and a.user_id = #{userId}
         </if>
+        <if test="role == 1">
+            and c.site_id = #{siteId}
+        </if>
         <if test="orderId != null and orderId !=''">
             and order_id = #{orderId}
         </if>
