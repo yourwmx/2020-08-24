@@ -52,7 +52,7 @@
                 and a.site_id = #{siteId}
             </if>
             <if test="timeStart != null and timeEnd != null">
-                and gmt_create
+                and a.gmt_create
                 between #{timeStart} and #{timeEnd}
             </if>
             GROUP BY a.create_by) x
@@ -65,7 +65,7 @@
                 a.create_by =  b.user_id
                 and a.order_state = 2
             <if test="timeStart != null and timeEnd != null">
-                and gmt_create
+                and a.gmt_create
                 between #{timeStart} and #{timeEnd}
             </if>
             GROUP BY a.create_by) y
@@ -79,7 +79,7 @@
                 a.create_by =  b.user_id
                 and a.order_state = 3
             <if test="timeStart != null and timeEnd != null">
-                and gmt_create
+                and a.gmt_create
                 between #{timeStart} and #{timeEnd}
             </if>
             GROUP BY a.create_by) z
