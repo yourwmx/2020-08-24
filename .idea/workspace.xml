@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9c8584e3-c1ce-4b77-932f-464935fa490b" name="Default" comment="yida1.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/user/service/UserService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/sc-api-gateway/.gradle/" />
@@ -127,23 +126,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/UserDaoMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="166" column="22" lean-forward="true" selection-start-line="166" selection-start-column="22" selection-end-line="166" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/user/service/UserService.java">
+        <entry file="file://$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/LineDaoMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1152">
+              <caret line="137" column="35" lean-forward="true" selection-start-line="137" selection-start-column="35" selection-end-line="137" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -226,8 +213,8 @@
         <option value="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/site/dao/SiteDao.java" />
         <option value="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/user/dao/UserDao.java" />
         <option value="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/user/entity/UserInfo.java" />
-        <option value="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/UserDaoMapper.xml" />
         <option value="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/user/service/UserService.java" />
+        <option value="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/UserDaoMapper.xml" />
       </list>
     </option>
   </component>
@@ -245,6 +232,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -328,33 +316,6 @@
               <item name="sc-xzsd-pc" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="xzsd" type="462c0819:PsiDirectoryNode" />
-              <item name="pc" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc2019" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yida" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="sc-provider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="sc-xzsd-pc" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="xzsd" type="462c0819:PsiDirectoryNode" />
-              <item name="pc" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc2019" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yida" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="sc-provider" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="sc-xzsd-pc" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -382,7 +343,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -629,21 +589,8 @@
       <workItem from="1598850749441" duration="10735000" />
       <workItem from="1598920732948" duration="8679000" />
       <workItem from="1598930661680" duration="985000" />
-      <workItem from="1598931987551" duration="374000" />
-    </task>
-    <task id="LOCAL-00026" summary="yida1.1">
-      <created>1598446470217</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1598446470217</updated>
-    </task>
-    <task id="LOCAL-00027" summary="yida1.1">
-      <created>1598494097673</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1598494097673</updated>
+      <workItem from="1598931987551" duration="1052000" />
+      <workItem from="1598945768625" duration="574000" />
     </task>
     <task id="LOCAL-00028" summary="yida1.1">
       <created>1598494887013</created>
@@ -974,11 +921,25 @@
       <option name="project" value="LOCAL" />
       <updated>1598931005586</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="yida1.1">
+      <created>1598932371529</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1598932371530</updated>
+    </task>
+    <task id="LOCAL-00076" summary="yida1.1">
+      <created>1598932728800</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1598932728800</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222308000" />
+    <option name="totallyTimeSpent" value="223560000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -993,7 +954,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915966" visible="true" weight="0.21908316" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915966" visible="true" weight="0.22121535" />
       <window_info id="Structure" order="1" sideWeight="0.50084037" side_tool="true" weight="0.30624464" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1416,13 +1377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/LineDaoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/site/service/SiteService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1522,8 +1476,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/UserDaoMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="166" column="22" lean-forward="true" selection-start-line="166" selection-start-column="22" selection-end-line="166" selection-end-column="22" />
+        <state relative-caret-position="264">
+          <caret line="97" column="21" lean-forward="true" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1534,6 +1488,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/LineDaoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="137" column="35" lean-forward="true" selection-start-line="137" selection-start-column="35" selection-end-line="137" selection-end-column="35" />
         </state>
       </provider>
     </entry>

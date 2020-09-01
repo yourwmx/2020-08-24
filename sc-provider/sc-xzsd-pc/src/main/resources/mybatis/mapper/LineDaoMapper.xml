@@ -121,7 +121,7 @@
             between #{timeStart} and #{timeEnd}
         </if>
         <if test="lineId != null and lineId !=''">
-            and line_id = #{lineId}
+            and a.line_id = #{lineId}
         </if>
         <if test="lineName != null and lineName !=''">
             and line_name like concat('%',#{lineName},'%')
