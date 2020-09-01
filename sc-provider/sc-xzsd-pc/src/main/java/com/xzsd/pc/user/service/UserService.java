@@ -44,9 +44,9 @@ public class UserService {
         }
         // 往快递员表新增
         //int count = deliveryDao.addDelivery(userInfo.getUserId());
-        // 若站点编号不为空，则判断该站点是否有站长
+        // 若站点编号不为空且添加的角色为站长，则判断该站点是否有站长
         int count;
-        if(userInfo.getSiteId() != null){
+        if(userInfo.getSiteId() != null && "1".compareTo(userInfo.getRole()) == 0){
             count = userDao.haveSiteManager(userInfo);
             if(0 == count) {
                 return AppResponse.bizError("该站点已有站长，请重试！");

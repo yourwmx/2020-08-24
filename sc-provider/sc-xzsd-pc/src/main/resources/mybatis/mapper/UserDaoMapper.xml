@@ -89,23 +89,25 @@
     <!--查询用户详情-->
     <select id="findUserById" parameterType="java.lang.String" resultType="com.xzsd.pc.user.entity.UserInfo">
         select
-            user_id userId,
-            account,
-            name,
-            sex,
-            phone,
-            email,
-            idCard,
-            password,
-            photo,
-            site_id siteId,
-            role,
-            version
+            a.user_id userId,
+            a.account,
+            a.name,
+            a.sex,
+            a.phone,
+            a.email,
+            a.idCard,
+            a.password,
+            a.photo,
+            a.site_id siteId,
+            b.site_name siteName,
+            a.role,
+            a.version
         from
-            t_sys_user
+            t_sys_user a,t_sys_site b
         where
-            is_deleted = 0
-            and user_id = #{userId}
+            a.is_deleted = 0
+            and a.user_id = #{userId}
+            and a.site_id = b.site_id
     </select>
     <!--统计用户账号或手机号数量-->
     <select id="countUserAccountOrPhone" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="int">

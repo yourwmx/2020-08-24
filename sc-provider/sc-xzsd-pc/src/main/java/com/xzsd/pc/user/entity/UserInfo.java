@@ -61,6 +61,10 @@ public class UserInfo {
      */
     private String siteId;
     /**
+     * 站点名称
+     */
+    private String siteName;
+    /**
      * 删除标记 0未删 1删
      */
     private int isDeleted;
@@ -235,5 +239,13 @@ public class UserInfo {
 
     public void setSiteId(String siteId) {
         this.siteId = siteId;
+    }
+
+    public String getSiteName() {
+        return siteName;
+    }
+
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
     }
 }
