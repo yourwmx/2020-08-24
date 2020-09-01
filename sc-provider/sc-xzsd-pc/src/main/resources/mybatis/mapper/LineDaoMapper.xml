@@ -103,23 +103,24 @@
             group by line_id) e
         on
             a.line_id = e.line_id
+        <if test="timeStart != null and timeEnd != null">
+            and e.gmt_create
+            between #{timeStart} and #{timeEnd}
+        </if>
         left join
             (select
                 gmt_create,line_id,sum(postage) sum
             from
                 t_sys_order
             group by line_id) f
-        on a.line_id = f.line_id
-        where
-            a.is_deleted = 0
-        <if test="timeStart != null and timeEnd != null">
-            and e.gmt_create
-            between #{timeStart} and #{timeEnd}
-        </if>
+        on
+            a.line_id = f.line_id
         <if test="timeStart != null and timeEnd != null">
             and f.gmt_create
             between #{timeStart} and #{timeEnd}
         </if>
+        where
+            a.is_deleted = 0
         <if test="lineId != null and lineId !=''">
             and a.line_id = #{lineId}
         </if>

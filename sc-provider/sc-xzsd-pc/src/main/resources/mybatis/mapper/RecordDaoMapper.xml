@@ -51,6 +51,10 @@
             <if test="(role == 1) || (siteId != null and siteId != '')">
                 and a.site_id = #{siteId}
             </if>
+            <if test="timeStart != null and timeEnd != null">
+                and gmt_create
+                between #{timeStart} and #{timeEnd}
+            </if>
             GROUP BY a.create_by) x
         LEFT JOIN
             (select
@@ -60,6 +64,10 @@
             WHERE
                 a.create_by =  b.user_id
                 and a.order_state = 2
+            <if test="timeStart != null and timeEnd != null">
+                and gmt_create
+                between #{timeStart} and #{timeEnd}
+            </if>
             GROUP BY a.create_by) y
         ON x.userId = y.userId
         LEFT JOIN
@@ -70,19 +78,15 @@
             WHERE
                 a.create_by =  b.user_id
                 and a.order_state = 3
+            <if test="timeStart != null and timeEnd != null">
+                and gmt_create
+                between #{timeStart} and #{timeEnd}
+            </if>
             GROUP BY a.create_by) z
         ON x.userId = z.userId
         LEFT JOIN t_sys_user w
             ON x.userId = w.user_id
         WHERE
             w.role != 4
-        <if test="timeStart != null and timeEnd != null">
-            and x.gmt_create
-            between #{timeStart} and #{timeEnd}
-            and y.gmt_create
-            between #{timeStart} and #{timeEnd}
-            and z.gmt_create
-            between #{timeStart} and #{timeEnd}
-        </if>
     </select>
 </mapper>
