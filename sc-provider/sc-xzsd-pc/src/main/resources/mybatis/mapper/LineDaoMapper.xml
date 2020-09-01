@@ -101,6 +101,7 @@
             from
                 t_sys_car_record
             <if test="timeStart != null and timeEnd != null">
+            where
                 gmt_create
                 between #{timeStart} and #{timeEnd}
             </if>
@@ -113,6 +114,7 @@
             from
                 t_sys_order
             <if test="timeStart != null and timeEnd != null">
+            where
                 gmt_create
                 between #{timeStart} and #{timeEnd}
             </if>
