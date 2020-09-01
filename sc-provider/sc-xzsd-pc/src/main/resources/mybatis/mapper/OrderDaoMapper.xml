@@ -60,7 +60,7 @@
         order by a.gmt_create desc
     </select>
     <!--查询站点编号列表-->
-    <select id="queryNextSiteById" parameterType="java.lang.String" resultType="com.xzsd.pc.site.entity.SiteInfo">
+    <select id="queryNextSiteById" parameterType="java.lang.String" resultType="com.xzsd.pc.dictionary.entity.DictionaryInfo">
         select
             dictionary_id dictionaryId,
             v
