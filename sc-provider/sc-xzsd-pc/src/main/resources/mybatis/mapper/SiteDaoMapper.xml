@@ -56,7 +56,7 @@
         on
             b.is_deleted = 0
             and b.site_id = a.site_id
-            and b.role = 1
+            and role = 1
         where
             a.is_deleted = 0
         <if test="siteId != null and siteId !=''">
@@ -74,7 +74,8 @@
         <if test="cityId != null and cityId !=''">
             and city_id = #{cityId}
         </if>
-            order by a.gmt_create desc
+        group by site_name
+        order by a.gmt_create desc
     </select>
     <!--查询站点详情-->
     <select id="findSiteById" parameterType="java.lang.String" resultType="com.xzsd.pc.site.entity.SiteInfo">

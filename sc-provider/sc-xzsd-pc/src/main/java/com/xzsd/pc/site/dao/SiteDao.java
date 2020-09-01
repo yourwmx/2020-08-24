@@ -1,6 +1,7 @@
 package com.xzsd.pc.site.dao;
 
 import com.xzsd.pc.site.entity.SiteInfo;
+import com.xzsd.pc.user.entity.UserInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

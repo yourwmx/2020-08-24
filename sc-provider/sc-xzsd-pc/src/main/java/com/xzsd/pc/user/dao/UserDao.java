@@ -46,4 +46,10 @@ public interface UserDao {
      * 删除用户信息
      */
     int deleteUser(@Param("listDeleteUserId") List<String> listDeleteUserId, @Param("updateUserId") String updateUserId);
+    /**
+     * 判断该站点是否有站长
+     * wumaoxing
+     * 2020-09-01 10:43
+     */
+    int haveSiteManager(UserInfo userInfo);
 }

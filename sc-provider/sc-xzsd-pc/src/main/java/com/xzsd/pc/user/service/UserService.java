@@ -4,7 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.util.UUIDUtils;
-import com.xzsd.pc.delivery.dao.DeliveryDao;
 import com.xzsd.pc.user.dao.UserDao;
 import com.xzsd.pc.user.entity.UserInfo;
 import com.xzsd.pc.utils.PasswordUtils;
@@ -21,9 +20,6 @@ public class UserService {
 
     @Resource
     private UserDao userDao;
-
-    @Resource
-    private DeliveryDao deliveryDao;
 
     /**
      * 新增用户
@@ -48,8 +44,16 @@ public class UserService {
         }
         // 往快递员表新增
         //int count = deliveryDao.addDelivery(userInfo.getUserId());
+        // 若站点编号不为空，则判断该站点是否有站长
+        int count;
+        if(userInfo.getSiteId() != null){
+            count = userDao.haveSiteManager(userInfo);
+            if(0 == count) {
+                return AppResponse.bizError("该站点已有站长，请重试！");
+            }
+        }
         // 新增用户
-        int count = userDao.addUser(userInfo);
+        count = userDao.addUser(userInfo);
         if(0 == count) {
             return AppResponse.bizError("新增失败，请重试！");
         }

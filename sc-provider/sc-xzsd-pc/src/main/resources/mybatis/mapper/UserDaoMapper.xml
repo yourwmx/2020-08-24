@@ -157,4 +157,18 @@
             #{item}
         </foreach>
     </update>
+    <!--判断该站点是否有站长-->
+    <select id="haveSiteManager" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="int">
+        select
+            count(*)
+        from
+            t_sys_user
+        where
+            is_deleted = 0
+            and role = 1
+            and site_id = #{siteId}
+        <if test="userId != null and userId != ''">
+            and user_id != #{userId}
+        </if>
+    </select>
 </mapper>
