@@ -56,6 +56,7 @@
         on
             b.is_deleted = 0
             and b.site_id = a.site_id
+            and b.role = 1
         where
             a.is_deleted = 0
         <if test="siteId != null and siteId !=''">
