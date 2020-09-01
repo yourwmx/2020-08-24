@@ -48,7 +48,7 @@ public class UserService {
         int count;
         if(userInfo.getSiteId() != null && "1".compareTo(userInfo.getRole()) == 0){
             count = userDao.haveSiteManager(userInfo);
-            if(0 == count) {
+            if(0 != count) {
                 return AppResponse.bizError("该站点已有站长，请重试！");
             }
         }
