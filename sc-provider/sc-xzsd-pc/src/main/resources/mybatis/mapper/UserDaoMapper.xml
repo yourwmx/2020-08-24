@@ -103,11 +103,14 @@
             a.role,
             a.version
         from
-            t_sys_user a,t_sys_site b
+            t_sys_user a
+        left join
+            t_sys_site b
+        on
+            a.site_id = b.site_id
         where
             a.is_deleted = 0
             and a.user_id = #{userId}
-            and a.site_id = b.site_id
     </select>
     <!--统计用户账号或手机号数量-->
     <select id="countUserAccountOrPhone" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="int">
