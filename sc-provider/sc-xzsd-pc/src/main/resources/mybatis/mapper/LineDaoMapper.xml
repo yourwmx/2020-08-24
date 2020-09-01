@@ -80,7 +80,9 @@
             a.line_price linePrice,
             a.line_prices linePrices,
             e.sum expense,
-            f.sum income
+            e.gmt_create,
+            f.sum income,
+            f.gmt_create
         from
             t_sys_line a
         left join
@@ -103,10 +105,6 @@
             group by line_id) e
         on
             a.line_id = e.line_id
-        <if test="timeStart != null and timeEnd != null">
-            and e.gmt_create
-            between #{timeStart} and #{timeEnd}
-        </if>
         left join
             (select
                 gmt_create,line_id,sum(postage) sum
@@ -114,12 +112,16 @@
                 t_sys_order
             group by line_id) f
         on a.line_id = f.line_id
+        where
+            a.is_deleted = 0
+        <if test="timeStart != null and timeEnd != null">
+            and e.gmt_create
+            between #{timeStart} and #{timeEnd}
+        </if>
         <if test="timeStart != null and timeEnd != null">
             and f.gmt_create
             between #{timeStart} and #{timeEnd}
         </if>
-        where
-            a.is_deleted = 0
         <if test="lineId != null and lineId !=''">
             and line_id = #{lineId}
         </if>
