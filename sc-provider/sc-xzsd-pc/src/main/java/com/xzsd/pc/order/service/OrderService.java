@@ -71,7 +71,8 @@ public class OrderService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addOrder(OrderInfo orderInfo){
-        orderInfo.setOrderId(RandomUtil.radmonkey(6));
+        String tmpOrderId = "1" + RandomUtil.radmonkey(5);
+        orderInfo.setOrderId(tmpOrderId);
         // 增加订单记录
         List<String> listaddOrderId = new ArrayList<>();
         listaddOrderId.add(orderInfo.getOrderId());
