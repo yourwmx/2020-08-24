@@ -12,6 +12,7 @@
             d.site_name destinationSiteName,
             a.receiver_name receiverName,
             a.receiver_phone receiverPhone,
+            a.receiver_address receiverAddress,
             weight,
             postage,
             order_state orderState,
