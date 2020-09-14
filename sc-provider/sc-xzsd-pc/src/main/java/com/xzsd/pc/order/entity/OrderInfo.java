@@ -66,6 +66,10 @@ public class OrderInfo {
      */
     private String receiverPhone;
     /**
+     * 收件人地址
+     */
+    private String receiverAddress;
+    /**
      * 收件员用户编号
      */
     private String receiverUserId;
@@ -435,5 +439,13 @@ public class OrderInfo {
 
     public void setSiteId(String siteId) {
         this.siteId = siteId;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
     }
 }

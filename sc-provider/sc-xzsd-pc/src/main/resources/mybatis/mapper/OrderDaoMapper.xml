@@ -83,6 +83,7 @@
                 destination_site_id,
                 receiver_name,
                 receiver_phone,
+                receiver_address,
                 weight,
                 postage,
                 order_state,
@@ -102,6 +103,7 @@
                 #{destinationSiteId},
                 #{receiverName},
                 #{receiverPhone},
+                #{receiverAddress},
                 #{weight},
                 #{postage},
                 0,
@@ -121,7 +123,8 @@
             concat(c.v,d.v,b.site_name) origin,
             concat(f.v,g.v,e.site_name) destination,
             a.receiver_name receiverName,
-            a.receiver_phone receiverPhone
+            a.receiver_phone receiverPhone,
+            a.receiver_address receiverAddress
         from
             t_sys_order a,
             t_sys_site b,t_sys_dictionary c,t_sys_dictionary d,
