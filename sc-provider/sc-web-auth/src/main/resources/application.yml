@@ -37,9 +37,9 @@ spring:
   tengxun:
     accessKey: AKIDLYdiaLm6i8J3QkMJeCXdbJpEm9GBoKXT
     secretKey: phlgNdhdNoWnoJFl4lCO1OWOgltmWJyO
-    bucket: bookstore-1301648696
-    bucketName: bookstore-1301648696
-    path: https://bookstore-1301648696.cos.ap-guangzhou.myqcloud.com
+    bucket: douying-1303249782
+    bucketName: douying-1303249782
+    path: https://douying-1303249782.cos.ap-guangzhou.myqcloud.com
     qianzhui: lover
     area: ap-guangzhou
   http:
